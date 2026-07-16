@@ -1,323 +1,280 @@
-import styled, { css } from "styled-components";
-
-const RING_SIZE = "clamp(12.8rem, 12vw, 17.2rem)";
+import styled from "styled-components";
 
 export const Section = styled.section`
+  position: relative;
+  overflow: hidden;
+  color: ${({ theme }) => theme.colors.text.primary};
+  background: ${({ theme }) => theme.colors.background.page};
+`;
+
+export const Content = styled.div`
+  width: min(100%, ${({ theme }) => theme.layout.maxWidth});
+  margin: 0 auto;
+  padding: clamp(4rem, 7vw, 7rem) ${({ theme }) => theme.spacing.pageX}
+    clamp(3rem, 6vw, 5rem);
+`;
+
+export const Header = styled.header`
   display: grid;
-  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 2.8fr);
-  gap: clamp(3rem, 4vw, 6rem);
-  align-items: start;
+  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.55fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: end;
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
 
-  padding: clamp(3.4rem, 5vw, 6rem) 0 clamp(3rem, 4vw, 4.8rem);
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border.subtle};
-
-  @media (max-width: 1040px) {
+  @media (max-width: 860px) {
     grid-template-columns: 1fr;
+    align-items: start;
   }
 `;
 
 export const Intro = styled.div`
-  max-width: 25rem;
+  min-width: 0;
 `;
 
-export const Eyebrow = styled.p`
-  margin: 0 0 1.8rem;
-
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.36em;
-  line-height: 1.4;
+export const Kicker = styled.p`
+  margin: 0 0 clamp(1rem, 2vw, 1.4rem);
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.text.accent};
 `;
 
 export const Title = styled.h2`
   margin: 0;
-
-  font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: clamp(3.35rem, 4.8vw, 5.7rem);
-  font-weight: 400;
-  line-height: 0.9;
-  letter-spacing: -0.052em;
-
-  color: ${({ theme }) => theme.colors.text.primary};
-`;
-
-export const Italic = styled.em`
-  font-style: italic;
-  font-weight: 400;
-`;
-
-export const SummaryLink = styled.a`
-  position: relative;
-
-  display: inline-flex;
-  align-items: center;
-  gap: 2rem;
-
-  margin-top: clamp(3rem, 4vw, 5rem);
-  padding-bottom: 0.7rem;
-
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  line-height: 1;
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(4.5rem, 13vw, 12.5rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
-  text-decoration: none;
-
   color: ${({ theme }) => theme.colors.text.primary};
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-    height: 1px;
-
-    background: linear-gradient(
-      90deg,
-      ${({ theme }) => theme.colors.text.primary},
-      ${({ theme }) => theme.colors.text.primary} 68%,
-      transparent 68%
-    );
-
-    opacity: 0.7;
-  }
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.accent.burgundy};
+  @media (max-width: 560px) {
+    font-size: clamp(3.6rem, 21vw, 6rem);
   }
 `;
 
-export const Arrow = styled.span`
-  font-size: 1.15rem;
-  letter-spacing: 0;
-  transform: translateY(-1px);
-`;
-
-export const MetricsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: start;
-
-  @media (max-width: 1240px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 4.2rem;
-  }
-
-  @media (max-width: 680px) {
-    grid-template-columns: 1fr;
-    row-gap: 3.8rem;
-  }
-`;
-
-export const MetricCard = styled.article`
-  position: relative;
-
-  display: grid;
-  justify-items: center;
-  gap: 1.8rem;
-
-  min-width: 0;
-  padding: 0 clamp(1.3rem, 2vw, 2.7rem);
-
-  text-align: center;
-
-  & + & {
-    border-left: 1px solid ${({ theme }) => theme.colors.border.subtle};
-  }
-
-  @media (max-width: 1240px) {
-    &:nth-child(3) {
-      border-left: 0;
-    }
-  }
-
-  @media (max-width: 680px) {
-    padding: 0;
-    border-left: 0 !important;
-  }
-`;
-
-type RingProps = {
-  $progress: number;
-  $variant: "classic" | "ticks" | "soft";
-};
-
-export const Ring = styled.div<RingProps>`
-  position: relative;
-
-  display: grid;
-  place-items: center;
-
-  width: ${RING_SIZE};
-  aspect-ratio: 1;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      ${({ theme }) => theme.colors.background.paper} 0 55%,
-      transparent 56%
-    ),
-    conic-gradient(
-      from -92deg,
-      ${({ theme }) => theme.colors.accent.burgundy} 0
-        ${({ $progress }) => $progress}%,
-      ${({ theme }) => theme.colors.accent.goldSoft}
-        ${({ $progress }) => $progress}%
-        calc(${({ $progress }) => $progress}% + 8%),
-      rgba(30, 27, 24, 0.1) calc(${({ $progress }) => $progress}% + 8%) 100%
-    );
-
-  box-shadow:
-    inset 0 0 0 1px rgba(30, 27, 24, 0.12),
-    inset 0 0 0 0.9rem rgba(252, 250, 247, 0.9),
-    inset 0 0 0 1.05rem rgba(184, 135, 70, 0.14),
-    0 2.4rem 5.2rem rgba(30, 27, 24, 0.05);
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    border-radius: inherit;
-    pointer-events: none;
-  }
+export const TopText = styled.div`
+  max-width: 28rem;
+  padding-bottom: clamp(0.35rem, 1vw, 0.8rem);
 
   &::before {
-    inset: -0.55rem;
-
-    background: repeating-conic-gradient(
-      from 0deg,
-      rgba(30, 27, 24, 0.2) 0deg 0.7deg,
-      transparent 0.7deg 5.5deg
-    );
-
-    opacity: 0.46;
+    content: "";
+    display: block;
+    width: 2.8rem;
+    height: 0.22rem;
+    margin-bottom: 1.4rem;
+    background: ${({ theme }) => theme.colors.accent.pink};
   }
-
-  &::after {
-    inset: 1.05rem;
-    border: 1px dotted rgba(30, 27, 24, 0.24);
-  }
-
-  ${({ $variant }) =>
-    $variant === "ticks" &&
-    css`
-      &::before {
-        inset: -0.8rem;
-
-        background: repeating-conic-gradient(
-          from 0deg,
-          rgba(184, 135, 70, 0.42) 0deg 1deg,
-          transparent 1deg 4deg
-        );
-
-        opacity: 0.62;
-      }
-    `}
-
-  ${({ $variant, $progress, theme }) =>
-    $variant === "soft" &&
-    css`
-      background:
-        radial-gradient(
-          circle,
-          ${theme.colors.background.paper} 0 56%,
-          transparent 57%
-        ),
-        conic-gradient(
-          from -112deg,
-          rgba(184, 135, 70, 0.42) 0 24%,
-          ${theme.colors.accent.burgundy} 24% ${$progress}%,
-          rgba(30, 27, 24, 0.09) ${$progress}% 100%
-        );
-    `}
 `;
 
-type MarkerProps = {
-  $angle: number;
-};
-
-export const Marker = styled.span<MarkerProps>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-
-  width: 0.62rem;
-  height: 0.62rem;
-
-  border-radius: 50%;
-  background: ${({ theme }) => theme.colors.accent.burgundy};
-
-  box-shadow:
-    0 0 0 0.32rem ${({ theme }) => theme.colors.background.paper},
-    0 0 0 0.43rem rgba(184, 135, 70, 0.45);
-
-  transform: rotate(${({ $angle }) => $angle}deg)
-    translate(calc(${RING_SIZE} / 2))
-    rotate(calc(${({ $angle }) => $angle}deg * -1));
-`;
-
-export const RingContent = styled.div`
-  position: relative;
-  z-index: 1;
-
-  display: grid;
-  justify-items: center;
-  gap: 0.8rem;
-
-  max-width: 72%;
-`;
-
-export const MetricTitle = styled.h3`
-  display: grid;
-  gap: 0.08em;
-
+export const Lead = styled.p`
   margin: 0;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: clamp(0.96rem, 1.05vw, 1.1rem);
+  line-height: 1.75;
+  color: ${({ theme }) => theme.colors.text.secondary};
+`;
 
-  font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: clamp(2.2rem, 2.45vw, 3.45rem);
-  font-weight: 400;
-  line-height: 0.88;
-  letter-spacing: -0.048em;
+export const Layout = styled.div`
+  width: 100%;
+`;
 
-  color: ${({ theme }) => theme.colors.accent.burgundy};
+export const Timeline = styled.div`
+  width: 100%;
+  border-top: 1px solid ${({ theme }) => theme.colors.border.subtle};
+`;
+
+export const TimelineItem = styled.article`
+  display: grid;
+  grid-template-columns:
+    minmax(6.5rem, 0.16fr)
+    minmax(5rem, 0.08fr)
+    minmax(0, 1fr)
+    minmax(12rem, 0.32fr)
+    1.25rem;
+  grid-template-areas: "period number content tags arrow";
+  gap: clamp(1.25rem, 2.6vw, 2.75rem);
+  align-items: start;
+  padding: clamp(2rem, 4vw, 3.4rem) 0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border.subtle};
+
+  > svg {
+    grid-area: arrow;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.45rem;
+    color: ${({ theme }) => theme.colors.text.accent};
+    stroke-width: 1.8;
+    transition: transform ${({ theme }) => theme.transitions.fast};
+  }
+
+  &:hover > svg {
+    transform: translate(0.2rem, -0.2rem);
+  }
+
+  @media (max-width: 1040px) {
+    grid-template-columns:
+      6.5rem
+      4.5rem
+      minmax(0, 1fr)
+      1.25rem;
+    grid-template-areas:
+      "period number content arrow"
+      ". . tags .";
+    row-gap: 1.25rem;
+  }
+
+  @media (max-width: 680px) {
+    grid-template-columns: 4.2rem minmax(0, 1fr) 1.2rem;
+    grid-template-areas:
+      "period period arrow"
+      "number content content"
+      ". tags tags";
+    column-gap: 1rem;
+    row-gap: 1rem;
+    padding: 2rem 0;
+  }
+`;
+
+export const Number = styled.p`
+  grid-area: number;
+  height: 100%;
+  min-height: clamp(5.5rem, 7vw, 7rem);
+  margin: 0;
+  padding-right: clamp(1rem, 2vw, 1.8rem);
+  border-right: 1px solid ${({ theme }) => theme.colors.border.default};
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(3.5rem, 5vw, 5.5rem);
+  letter-spacing: -0.05em;
+  color: ${({ theme }) => theme.colors.text.accent};
+
+  @media (max-width: 1040px) {
+    font-size: clamp(3.2rem, 6vw, 4.5rem);
+  }
+
+  @media (max-width: 680px) {
+    min-height: 0;
+    padding-right: 0;
+    border-right: 0;
+    font-size: clamp(3rem, 14vw, 4rem);
+  }
+`;
+
+export const TimelineText = styled.div`
+  grid-area: content;
+  min-width: 0;
+`;
+
+export const Role = styled.h3`
+  max-width: 56rem;
+  margin: 0 0 0.7rem;
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(2rem, 3.25vw, 3.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: ${({ theme }) => theme.colors.text.primary};
+
+  @media (max-width: 680px) {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+`;
+
+export const Meta = styled.p`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: ${({ theme }) => theme.colors.text.primary};
 
   span {
-    display: block;
+    color: ${({ theme }) => theme.colors.text.accent};
   }
 `;
 
-export const MetricLabel = styled.p`
-  max-width: 10rem;
+export const Summary = styled.p`
+  max-width: 48rem;
   margin: 0;
-
   font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.26em;
-  line-height: 1.55;
-  text-transform: uppercase;
-
-  color: ${({ theme }) => theme.colors.text.primary};
+  font-size: clamp(0.88rem, 1vw, 0.96rem);
+  line-height: 1.7;
+  color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
-export const Description = styled.p`
-  max-width: 18rem;
-  margin: 0 auto;
+export const Tags = styled.div`
+  grid-area: tags;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.5rem;
+  padding-top: 0.3rem;
 
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: clamp(1.02rem, 0.9vw, 1.18rem);
-  font-weight: 400;
-  line-height: 1.5;
+  @media (max-width: 1040px) {
+    padding-top: 0;
+  }
+`;
 
+export const Tag = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.85rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid ${({ theme }) => theme.colors.border.default};
+  background: transparent;
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.67rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
   color: ${({ theme }) => theme.colors.text.secondary};
+
+  transition:
+    color ${({ theme }) => theme.transitions.fast},
+    border-color ${({ theme }) => theme.transitions.fast},
+    background ${({ theme }) => theme.transitions.fast};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.text.primary};
+    border-color: ${({ theme }) => theme.colors.text.accent};
+    background: ${({ theme }) => theme.colors.background.surfaceSoft};
+  }
+`;
+export const Period = styled.div`
+  grid-area: period;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin: 0;
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.text.secondary};
+`;
+
+export const PeriodLine = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+`;
+
+export const PeriodDot = styled.span`
+  color: ${({ theme }) => theme.colors.text.accent};
+  line-height: 1;
 `;
