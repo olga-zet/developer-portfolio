@@ -8,7 +8,7 @@ export const projects = {
     },
 
     intro:
-      "Aplikacje frontendowe budowane w React, TypeScript i z dbałością o logikę produktu oraz detal.",
+      "Lubię moment, w którym pomysł zaczyna działać naprawdę. Krok po kroku zamieniam go w aplikację — od logiki produktu i struktury kodu po interfejs, który jest intuicyjny, spójny i przyjemny w użyciu.",
 
     stackTitle: "Tech stack",
 
@@ -27,14 +27,14 @@ export const projects = {
     ],
 
     items: {
-      luna: {
+      tarot: {
         number: "01",
-        title: "Luna Tarot",
+        title: "Tarot App",
         type: "Web app",
         description:
-          "Nowoczesna aplikacja tarotowa z intuicyjnymi rozkładami, historią odczytów i interpretacjami AI.",
-        tags: ["React", "TypeScript", "Styled Components", "i18n"],
-        imageAlt: "Podgląd projektu Luna Tarot",
+          "Cyfrowe doświadczenie inspirowane tarotem, w którym wybór kart, dopracowane rozkłady i interpretacje AI tworzą spójną, intuicyjną całość.",
+        tags: ["React", "TypeScript", "Node.js", "i18n", "PostgreSQL"],
+        imageAlt: "Podgląd projektu Tarot App",
       },
 
       cv: {
@@ -42,7 +42,7 @@ export const projects = {
         title: "CV Maker",
         type: "Web app",
         description:
-          "Generator CV z live preview, personalizacją wyglądu i eksportem do PDF.",
+          "Aplikacja, która krok po kroku pomaga stworzyć dopracowane CV — z podglądem zmian na żywo, personalizacją wyglądu i gotowym plikiem PDF.",
         tags: ["React", "TypeScript", "Styled Components", "PDF"],
         imageAlt: "Podgląd projektu CV Maker",
       },
@@ -78,7 +78,7 @@ export const projects = {
     },
 
     intro:
-      "Frontend applications built with React, TypeScript and attention to product logic and detail.",
+      "What I enjoy most is the moment when an idea starts to truly come to life. Step by step, I turn it into an application — from product logic and code structure to an interface that feels intuitive, cohesive, and enjoyable to use.",
 
     stackTitle: "Tech stack",
 
@@ -97,14 +97,14 @@ export const projects = {
     ],
 
     items: {
-      luna: {
+      tarot: {
         number: "01",
-        title: "Luna Tarot",
+        title: "Tarot App",
         type: "Web app",
         description:
-          "A modern tarot reading app with intuitive spreads, reading history and AI-powered interpretations.",
-        tags: ["React", "TypeScript", "Styled Components", "i18n"],
-        imageAlt: "Luna Tarot project preview",
+          "A digital experience inspired by tarot, where card selection, thoughtfully designed spreads, and AI-powered interpretations come together in one cohesive and intuitive journey.",
+        tags: ["React", "TypeScript", "Node.js", "i18n", "PostgreSQL"],
+        imageAlt: "Tarot App project preview",
       },
 
       cv: {
@@ -112,7 +112,7 @@ export const projects = {
         title: "CV Maker",
         type: "Web app",
         description:
-          "A CV builder with live preview, visual customization and PDF export.",
+          "An application that guides users step by step through creating a polished CV - with live preview, visual customization, and PDF export.",
         tags: ["React", "TypeScript", "Styled Components", "PDF"],
         imageAlt: "CV Maker project preview",
       },
