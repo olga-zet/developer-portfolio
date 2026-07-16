@@ -299,7 +299,6 @@ export const FormHeading = styled.h3`
     font-size: clamp(2.6rem, 5vh, 4.3rem);
     font-weight: 900;
     line-height: 0.88;
-    letter-spacing: -0.045em;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.text.primary};
   }
@@ -385,17 +384,39 @@ export const Field = styled.div`
   gap: 0.32rem;
 `;
 
+export const FieldError = styled.div`
+  min-height: 1rem;
+  margin-top: 0.4rem;
+
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.68rem;
+  line-height: 1.4;
+
+  color: ${({ theme }) => theme.colors.accent.red};
+
+  &:empty {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+  }
+`;
+
 export const Label = styled.label`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  ${uppercaseText};
-  color: ${({ theme }) => theme.colors.text.primary};
+  gap: 0.45rem;
 
-  @media (min-width: 1081px) and (max-height: 760px) {
-    font-size: 0.6rem;
-  }
+  margin-bottom: 0.6rem;
+
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+
+  color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
 export const FieldNumber = styled.span`

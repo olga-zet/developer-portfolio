@@ -34,7 +34,26 @@ export const contact = {
         "Napisz kilka słów o roli, zespole lub procesie rekrutacyjnym...",
 
       submit: "Wyślij wiadomość",
+      submitting: "Wysyłanie...",
+
       note: "Odpowiadam zwykle w ciągu 1–2 dni roboczych",
+
+      errorPrefix: "Nie udało się wysłać formularza",
+      errorTitle: "Formularz niedostępny",
+      configurationError:
+        "Formularz kontaktowy nie został jeszcze prawidłowo skonfigurowany.",
+
+      successEyebrow: "Wiadomość wysłana",
+
+      successHeading: {
+        first: "Dziękuję za",
+        second: "wiadomość.",
+      },
+
+      successMessage:
+        "Wiadomość dotarła. Odpowiem najszybciej, jak będzie to możliwe.",
+
+      sendAnother: "Wyślij kolejną wiadomość",
     },
 
     details: {
@@ -102,7 +121,26 @@ export const contact = {
         "Tell me a little about the role, team or recruitment process...",
 
       submit: "Send message",
+      submitting: "Sending...",
+
       note: "I usually respond within 1–2 business days",
+
+      errorPrefix: "The form could not be submitted",
+      errorTitle: "Form unavailable",
+      configurationError:
+        "The contact form has not been configured correctly yet.",
+
+      successEyebrow: "Message sent",
+
+      successHeading: {
+        first: "Thank you for",
+        second: "reaching out.",
+      },
+
+      successMessage:
+        "Your message has arrived. I’ll get back to you as soon as possible.",
+
+      sendAnother: "Send another message",
     },
 
     details: {

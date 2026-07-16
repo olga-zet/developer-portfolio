@@ -19,7 +19,7 @@ type TextareaField = {
   required?: boolean;
 };
 
-export type ContactField = InputField | TextareaField;
+type ContactField = InputField | TextareaField;
 
 export const CONTACT_FIELDS = [
   {

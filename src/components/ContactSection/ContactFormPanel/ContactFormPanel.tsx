@@ -1,5 +1,5 @@
-import type { FormEvent } from "react";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, CircleAlert, ShieldCheck } from "lucide-react";
+import { useForm, ValidationError } from "@formspree/react";
 import { useTranslation } from "react-i18next";
 
 import { CONTACT_FIELDS } from "./ContactFormPanel.data";
@@ -7,6 +7,7 @@ import { CONTACT_FIELDS } from "./ContactFormPanel.data";
 import {
   ContactForm,
   Field,
+  FieldError,
   FieldNumber,
   FormEyebrow,
   FormGrid,
@@ -19,23 +20,51 @@ import {
   Textarea,
 } from "../ContactSection.styled";
 
+const formId = import.meta.env.VITE_FORMSPREE_FORM_ID;
+
 export const ContactFormPanel = () => {
   const { t } = useTranslation();
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const [state, handleSubmit, reset] = useForm(formId);
 
-    const formData = new FormData(event.currentTarget);
+  if (!formId) {
+    return (
+      <FormPanel>
+        <FormEyebrow>{t("contact.form.errorTitle")}</FormEyebrow>
 
-    const contactData = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      company: formData.get("company"),
-      message: formData.get("message"),
-    };
+        <FormNote role="alert">
+          <CircleAlert size={18} strokeWidth={1.7} aria-hidden="true" />
 
-    console.log(contactData);
-  };
+          <span>{t("contact.form.configurationError")}</span>
+        </FormNote>
+      </FormPanel>
+    );
+  }
+
+  if (state.succeeded) {
+    return (
+      <FormPanel>
+        <FormEyebrow>{t("contact.form.successEyebrow")}</FormEyebrow>
+
+        <FormHeading>
+          <span>{t("contact.form.successHeading.first")}</span>
+          <em>{t("contact.form.successHeading.second")}</em>
+        </FormHeading>
+
+        <FormNote role="status">
+          <ShieldCheck size={18} strokeWidth={1.7} aria-hidden="true" />
+
+          <span>{t("contact.form.successMessage")}</span>
+        </FormNote>
+
+        <SubmitButton type="button" onClick={reset}>
+          <span>{t("contact.form.sendAnother")}</span>
+
+          <ArrowRight size={22} aria-hidden="true" />
+        </SubmitButton>
+      </FormPanel>
+    );
+  }
 
   return (
     <FormPanel>
@@ -55,7 +84,6 @@ export const ContactFormPanel = () => {
               <Field key={field.name}>
                 <Label htmlFor={fieldId}>
                   <FieldNumber>{field.number} —</FieldNumber>
-
                   {t(field.labelKey)}
                 </Label>
 
@@ -77,22 +105,45 @@ export const ContactFormPanel = () => {
                     required={field.required}
                   />
                 )}
+
+                <FieldError>
+                  <ValidationError
+                    field={field.name}
+                    prefix={t(field.labelKey)}
+                    errors={state.errors}
+                  />
+                </FieldError>
               </Field>
             );
           })}
         </FormGrid>
 
-        <SubmitButton type="submit">
-          <span>{t("contact.form.submit")}</span>
+        <SubmitButton type="submit" disabled={state.submitting}>
+          <span>
+            {state.submitting
+              ? t("contact.form.submitting")
+              : t("contact.form.submit")}
+          </span>
 
           <ArrowRight size={22} aria-hidden="true" />
         </SubmitButton>
 
-        <FormNote>
-          <ShieldCheck size={18} strokeWidth={1.7} aria-hidden="true" />
+        {state.errors ? (
+          <FormNote role="alert">
+            <CircleAlert size={18} strokeWidth={1.7} aria-hidden="true" />
 
-          <span>{t("contact.form.note")}</span>
-        </FormNote>
+            <ValidationError
+              errors={state.errors}
+              prefix={t("contact.form.errorPrefix")}
+            />
+          </FormNote>
+        ) : (
+          <FormNote>
+            <ShieldCheck size={18} strokeWidth={1.7} aria-hidden="true" />
+
+            <span>{t("contact.form.note")}</span>
+          </FormNote>
+        )}
       </ContactForm>
     </FormPanel>
   );
