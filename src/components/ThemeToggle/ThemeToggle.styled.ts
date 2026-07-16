@@ -4,16 +4,11 @@ export const ToggleButton = styled.button`
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-
-  min-height: 2.35rem;
-  padding: 0.2rem 0.8rem;
-
+  padding: 0.4rem 0.7rem;
   border: 1px solid ${({ theme }) => theme.colors.border.subtle};
   border-radius: ${({ theme }) => theme.radii.pill};
-
   color: ${({ theme }) => theme.colors.text.primary};
-  background: ${({ theme }) => theme.colors.background.surface};
-
+  background: ${({ theme }) => theme.colors.background.page};
   cursor: pointer;
 
   transition:

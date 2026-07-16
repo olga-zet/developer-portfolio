@@ -1,6 +1,14 @@
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Cta, CtaArrow, Divider, HeroContent, HeroDescription, HeroName, HeroRole } from "./HeroIntro.styled.ts";
+import {
+  Cta,
+  CtaArrow,
+  Divider,
+  HeroContent,
+  HeroDescription,
+  HeroName,
+  HeroRole,
+} from "./HeroIntro.styled.ts";
 
 export const HeroIntro = () => {
   const { t } = useTranslation();
@@ -16,9 +24,7 @@ export const HeroIntro = () => {
         {t("hero.role")}
         <span>{t("hero.code")}</span>
       </HeroRole>
-
       <Divider />
-
       <HeroDescription>{t("hero.description")}</HeroDescription>
 
       <Cta to="/" hash="projects">

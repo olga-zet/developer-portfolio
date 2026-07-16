@@ -2,6 +2,10 @@ import { nav } from "./sections/nav";
 import { hero } from "./sections/hero";
 import { about } from "./sections/about.ts";
 import { projects } from "./sections/projects.ts";
+import { experience } from "./sections/experience.ts";
+import { stack } from "./sections/stack.ts";
+import { contact } from "./sections/contact.ts";
+import { projectsShowcase } from "./sections/projectsShowcase.ts";
 
 export const resources = {
   pl: {
@@ -10,6 +14,10 @@ export const resources = {
       hero: hero.pl,
       about: about.pl,
       projects: projects.pl,
+      experience: experience.pl,
+      stack: stack.pl,
+      contact: contact.pl,
+      projectsShowcase: projectsShowcase.pl,
     },
   },
 
@@ -19,6 +27,10 @@ export const resources = {
       hero: hero.en,
       about: about.en,
       projects: projects.en,
+      experience: experience.en,
+      stack: stack.en,
+      contact: contact.en,
+      projectsShowcase: projectsShowcase.en,
     },
   },
 } as const;

@@ -13,7 +13,7 @@ import {
   AboutTextBlock,
   SectionTitle,
   TextLead,
-  TextParagraph
+  TextParagraph,
 } from "./AboutSection.styled";
 
 export const AboutSection = () => {
