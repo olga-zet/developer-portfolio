@@ -61,17 +61,14 @@ export const AboutKicker = styled.p`
 
 export const SectionTitle = styled.h2`
   margin: 0;
-
   display: flex;
   flex-direction: column;
-
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(5rem, 8.5vw, 8.3rem);
   font-weight: 900;
   line-height: 0.86;
   letter-spacing: -0.045em;
   text-transform: uppercase;
-
   color: ${({ theme }) => theme.colors.text.primary};
 
   span {
@@ -90,23 +87,19 @@ export const AboutTextBlock = styled.div`
 
 export const TextLead = styled.p`
   margin: 0;
-
   font-size: clamp(1rem, 1.2vw, 1.12rem);
   font-weight: 800;
   line-height: 1.45;
   letter-spacing: -0.035em;
-
   color: ${({ theme }) => theme.colors.accent.pink};
 `;
 
 export const TextParagraph = styled.p`
   margin: 1.2rem 0 0;
-
   font-size: clamp(0.92rem, 1vw, 1rem);
   font-weight: 500;
   line-height: 1.72;
   letter-spacing: -0.025em;
-
   color: ${({ theme }) => theme.colors.text.secondary};
 
   &:first-child {
@@ -117,26 +110,13 @@ export const TextParagraph = styled.p`
 export const AboutImageFrame = styled.div`
   grid-area: image;
   position: relative;
-
-  padding: clamp(1.2rem, 2vw, 1.7rem);
-
+  padding: 0 clamp(1.2rem, 2vw, 1.7rem);
   display: flex;
   align-items: flex-end;
   justify-content: center;
 
   border: 1px solid ${({ theme }) => theme.colors.border.default};
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 49.8%,
-      ${({ theme }) => theme.colors.accent.pink} 49.8%,
-      ${({ theme }) => theme.colors.accent.pink} 50.2%,
-      transparent 50.2%,
-      transparent 100%
-    ),
-    ${({ theme }) => theme.colors.background.surface};
-
+  ${({ theme }) => theme.colors.background.surface};
   overflow: hidden;
 
   &::before {
