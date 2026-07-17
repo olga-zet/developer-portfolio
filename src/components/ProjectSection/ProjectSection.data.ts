@@ -7,6 +7,7 @@ export type ProjectItem = {
   image: string;
   tags: string[];
   href: string;
+  demoUrl: string;
 };
 
 export const PROJECTS: ProjectItem[] = [
@@ -16,6 +17,7 @@ export const PROJECTS: ProjectItem[] = [
     image: TarotApp,
     tags: ["React", "TypeScript", "Node.js", "i18n", "PostgreSQL"],
     href: "/projects/tarot-app",
+    demoUrl: "http://ola.pl",
   },
   {
     id: "cv",
@@ -23,5 +25,6 @@ export const PROJECTS: ProjectItem[] = [
     image: "",
     tags: ["React", "TypeScript", "Styled Components", "PDF"],
     href: "/projects/cv-maker",
+    demoUrl: "http://ola.pl",
   },
 ];

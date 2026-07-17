@@ -1,12 +1,17 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import type { ProjectItem } from "../ProjectSection/ProjectSection.data.ts";
+import { Description } from "../ProjectSection/ProjectSection.styled.ts";
+
 import {
   ActionButton,
+  DemoLink,
   ImageFrame,
+  ProjectActions,
   ProjectArticle,
   ProjectContent,
+  ProjectFooter,
   ProjectHeader,
   ProjectImage,
   ProjectMeta,
@@ -16,7 +21,6 @@ import {
   Tag,
   Type,
 } from "./ProjectCard.styled.ts";
-import { Description } from "../ProjectSection/ProjectSection.styled.ts";
 
 type ProjectCardProps = {
   projects: ProjectItem[];
@@ -27,48 +31,72 @@ export const ProjectCard = ({ projects }: ProjectCardProps) => {
 
   return (
     <>
-      {projects.map((project) => (
-        <ProjectArticle key={project.id}>
-          <ProjectMeta>
-            <ProjectNumber>
-              {t(`projects.items.${project.id}.number`)}
-            </ProjectNumber>
-          </ProjectMeta>
+      {projects.map((project) => {
+        const title = t(`projects.items.${project.id}.title`);
 
-          <ProjectContent>
-            <ProjectHeader>
-              <div>
-                <ProjectTitle>
-                  {t(`projects.items.${project.id}.title`)}
-                </ProjectTitle>
+        return (
+          <ProjectArticle key={project.id}>
+            <ProjectMeta>
+              <ProjectNumber>
+                {t(`projects.items.${project.id}.number`)}
+              </ProjectNumber>
+            </ProjectMeta>
 
-                <Type>{t(`projects.items.${project.id}.type`)}</Type>
-              </div>
+            <ProjectContent>
+              <ProjectHeader>
+                <div>
+                  <ProjectTitle>{title}</ProjectTitle>
 
-              <Description>
-                {t(`projects.items.${project.id}.description`)}
-              </Description>
-            </ProjectHeader>
+                  <Type>{t(`projects.items.${project.id}.type`)}</Type>
+                </div>
 
-            <ProjectTags>
-              {project.tags.map((tag) => (
-                <Tag key={`${project.id}-${tag}`}>{tag}</Tag>
-              ))}
-            </ProjectTags>
-          </ProjectContent>
+                <Description>
+                  {t(`projects.items.${project.id}.description`)}
+                </Description>
+              </ProjectHeader>
 
-          <ImageFrame>
-            <ProjectImage
-              src={project.image}
-              alt={t(`projects.items.${project.id}.imageAlt`)}
-            />
-          </ImageFrame>
+              <ProjectFooter>
+                <ProjectTags>
+                  {project.tags.map((tag) => (
+                    <Tag key={`${project.id}-${tag}`}>{tag}</Tag>
+                  ))}
+                </ProjectTags>
 
-          <ActionButton to={project.href} aria-label={t("projects.caseStudy")}>
-            <ArrowRight size={24} aria-hidden="true" />
-          </ActionButton>
-        </ProjectArticle>
-      ))}
+                <ProjectActions>
+                  {project.demoUrl && (
+                    <DemoLink
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${t("projects.liveDemo")}: ${title}`}
+                    >
+                      <span>{t("projects.liveDemo")}</span>
+
+                      <ExternalLink size={15} aria-hidden="true" />
+                    </DemoLink>
+                  )}
+
+                  <ActionButton
+                    to={project.href}
+                    aria-label={`${t("projects.caseStudy")}: ${title}`}
+                  >
+                    <span>{t("projects.caseStudy")}</span>
+
+                    <ArrowRight size={17} aria-hidden="true" />
+                  </ActionButton>
+                </ProjectActions>
+              </ProjectFooter>
+            </ProjectContent>
+
+            <ImageFrame>
+              <ProjectImage
+                src={project.image}
+                alt={t(`projects.items.${project.id}.imageAlt`)}
+              />
+            </ImageFrame>
+          </ProjectArticle>
+        );
+      })}
     </>
   );
 };

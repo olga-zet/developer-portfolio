@@ -3,15 +3,15 @@ export const projects = {
     kicker: "Projects / selected work",
 
     title: {
-      first: "Selected",
-      second: "projects",
+      first: "Wybrane",
+      second: "projekty",
     },
 
     intro:
       "Lubię moment, w którym pomysł zaczyna działać naprawdę. Krok po kroku zamieniam go w aplikację — od logiki produktu i struktury kodu po interfejs, który jest intuicyjny, spójny i przyjemny w użyciu.",
 
     stackTitle: "Tech stack",
-
+    liveDemo: "Zobacz demo",
     caseStudy: "View case study",
     privateRepo: "Private repository",
 
@@ -81,7 +81,7 @@ export const projects = {
       "What I enjoy most is the moment when an idea starts to truly come to life. Step by step, I turn it into an application — from product logic and code structure to an interface that feels intuitive, cohesive, and enjoyable to use.",
 
     stackTitle: "Tech stack",
-
+    liveDemo: "Live demo",
     caseStudy: "View case study",
     privateRepo: "Private repository",
 

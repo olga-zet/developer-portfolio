@@ -34,13 +34,16 @@ export const BrandMark = styled.span`
   font-weight: 800;
   line-height: 0.78;
   letter-spacing: 5px;
-
   text-transform: uppercase;
   font-style: italic;
-
   transform: rotate(-6deg);
-
   color: ${({ theme }) => theme.colors.text.primary};
+
+  span {
+    font-size: clamp(2.6rem, 5vw, 4.6rem);
+    font-weight: 800;
+    color: ${({ theme }) => theme.colors.text.accent};
+  }
 `;
 
 export const Nav = styled.nav`

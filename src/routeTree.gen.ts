@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as NotFoundRouteImport } from './routes/notFound'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsProjectSlugRouteImport } from './routes/projects.$projectSlug'
 
 const NotFoundRoute = NotFoundRouteImport.update({
   id: '/notFound',
@@ -22,31 +23,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsProjectSlugRoute = ProjectsProjectSlugRouteImport.update({
+  id: '/projects/$projectSlug',
+  path: '/projects/$projectSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/notFound': typeof NotFoundRoute
+  '/projects/$projectSlug': typeof ProjectsProjectSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/notFound': typeof NotFoundRoute
+  '/projects/$projectSlug': typeof ProjectsProjectSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/notFound': typeof NotFoundRoute
+  '/projects/$projectSlug': typeof ProjectsProjectSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/notFound'
+  fullPaths: '/' | '/notFound' | '/projects/$projectSlug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/notFound'
-  id: '__root__' | '/' | '/notFound'
+  to: '/' | '/notFound' | '/projects/$projectSlug'
+  id: '__root__' | '/' | '/notFound' | '/projects/$projectSlug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   NotFoundRoute: typeof NotFoundRoute
+  ProjectsProjectSlugRoute: typeof ProjectsProjectSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/$projectSlug': {
+      id: '/projects/$projectSlug'
+      path: '/projects/$projectSlug'
+      fullPath: '/projects/$projectSlug'
+      preLoaderRoute: typeof ProjectsProjectSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   NotFoundRoute: NotFoundRoute,
+  ProjectsProjectSlugRoute: ProjectsProjectSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

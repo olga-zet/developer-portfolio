@@ -5,7 +5,7 @@ import { projects } from "./sections/projects.ts";
 import { experience } from "./sections/experience.ts";
 import { stack } from "./sections/stack.ts";
 import { contact } from "./sections/contact.ts";
-import { projectsShowcase } from "./sections/projectsShowcase.ts";
+import { caseStudies } from "./sections/caseStudies.ts";
 
 export const resources = {
   pl: {
@@ -17,7 +17,7 @@ export const resources = {
       experience: experience.pl,
       stack: stack.pl,
       contact: contact.pl,
-      projectsShowcase: projectsShowcase.pl,
+      caseStudies: caseStudies.pl,
     },
   },
 
@@ -30,7 +30,7 @@ export const resources = {
       experience: experience.en,
       stack: stack.en,
       contact: contact.en,
-      projectsShowcase: projectsShowcase.en,
+      caseStudies: caseStudies.en,
     },
   },
 } as const;

@@ -12,7 +12,7 @@ import {
   Section,
   Timeline,
   Title,
-  TopText
+  TopText,
 } from "./ExperienceSection.styled";
 import type { ExperienceItem } from "./ExperienceSection.types.ts";
 

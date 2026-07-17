@@ -50,7 +50,10 @@ export const Navigation = () => {
         aria-label={BRAND_LABEL}
         onClick={closeMobileMenu}
       >
-        <BrandMark>{BRAND_INITIALS}</BrandMark>
+        <BrandMark>
+          {BRAND_INITIALS}
+          <span>.</span>
+        </BrandMark>
       </Brand>
 
       <Nav aria-label={t("nav.ariaLabel", "Main navigation")}>
