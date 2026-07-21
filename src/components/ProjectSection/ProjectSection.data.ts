@@ -12,19 +12,19 @@ export type ProjectItem = {
 
 export const PROJECTS: ProjectItem[] = [
   {
-    id: "tarot",
-    number: "01",
-    image: TarotApp,
-    tags: ["React", "TypeScript", "Node.js", "i18n", "PostgreSQL"],
-    href: "/projects/tarot-app",
-    demoUrl: "http://ola.pl",
-  },
-  {
     id: "cv",
     number: "02",
     image: "",
     tags: ["React", "TypeScript", "Styled Components", "PDF"],
     href: "/projects/cv-maker",
-    demoUrl: "http://ola.pl",
+    demoUrl: "https://cv-maker-five-brown.vercel.app",
+  },
+  {
+    id: "tarot",
+    number: "01",
+    image: TarotApp,
+    tags: ["React", "TypeScript", "Node.js", "i18n", "PostgreSQL"],
+    href: "/projects/tarot-app",
+    demoUrl: "https://cv-maker-five-brown.vercel.app",
   },
 ];
