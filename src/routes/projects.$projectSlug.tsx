@@ -1,6 +1,9 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { isProjectSlug, PROJECTS_BY_SLUG } from "../components/ProjectsShowcasePage/ProjectCaseStudy.data.ts";
+import {
+  isProjectSlug,
+  PROJECTS_BY_SLUG,
+} from "../components/ProjectsShowcasePage/ProjectCaseStudy.data.ts";
 import { ProjectCaseStudyRoute } from "../components/ProjectsShowcasePage/ProjectCaseStudyRoute.route.tsx";
 
 export const Route = createFileRoute("/projects/$projectSlug")({

@@ -1,5 +1,6 @@
 export type ProjectId = "tarot" | "cv" | "code4all" | "dashboard";
-import TarotApp from "../../assets/projects/tarotApp.png";
+import TarotApp from "../../../public/tarot-app/thumbnail.png";
+import CVMaker from "../../../public/cv-maker/thumbnail.png";
 
 export type ProjectItem = {
   id: ProjectId;
@@ -14,7 +15,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "cv",
     number: "02",
-    image: "",
+    image: CVMaker,
     tags: ["React", "TypeScript", "Styled Components", "PDF"],
     href: "/projects/cv-maker",
     demoUrl: "https://cv-maker-five-brown.vercel.app",
@@ -25,6 +26,6 @@ export const PROJECTS: ProjectItem[] = [
     image: TarotApp,
     tags: ["React", "TypeScript", "Node.js", "i18n", "PostgreSQL"],
     href: "/projects/tarot-app",
-    demoUrl: "https://cv-maker-five-brown.vercel.app",
+    demoUrl: "https://tarot-app-kohl-omega.vercel.app/",
   },
 ];

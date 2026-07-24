@@ -217,7 +217,7 @@ export const caseStudies = {
           },
 
           description:
-            "Aplikacja, która krok po kroku pomaga stworzyć dopracowane CV — z podglądem zmian na żywo, personalizacją wyglądu i eksportem do PDF.",
+            "Responsywny, wieloetapowy kreator CV, który prowadzi użytkownika od wyboru szablonu do wydrukowania dokumentu lub zapisania go jako PDF. Był to mój pierwszy projekt po powrocie do programowania po przerwie zawodowej.",
 
           actions: {
             demo: "Zobacz demo",
@@ -244,154 +244,164 @@ export const caseStudies = {
           images: {
             desktopAlt: "Aplikacja CV Maker wyświetlona na ekranie komputera",
 
-            mobileAlt: "Mobilny interfejs aplikacji CV Maker",
+            mobileAlt: "Mobilny widok wieloetapowego formularza CV Maker",
           },
         },
 
         overview: {
           title: {
-            first: "Od pustej strony",
-            second: "do gotowego CV.",
+            first: "Jeden formularz.",
+            second: "Wiele szablonów.",
           },
 
           description:
-            "CV Maker był moim pierwszym projektem po powrocie do programowania. Stworzyłam go, aby ponownie wejść w rytm pracy z Reactem i TypeScriptem oraz przejść przez cały proces budowania kompletnej aplikacji frontendowej.",
+            "CV Maker był moim pierwszym samodzielnym projektem po powrocie do programowania. Aplikacja prowadzi użytkownika przez wybór szablonu, uzupełnienie danych i przygotowanie gotowego dokumentu. Jeden model danych i wspólny formularz obsługują wszystkie dostępne układy CV.",
 
           imageAlts: [
-            "Wieloetapowy formularz tworzenia CV",
-            "Podgląd dokumentu aktualizowany na żywo",
-            "Widok wyboru szablonu CV",
+            "Wieloetapowy formularz do tworzenia CV",
+            "Gotowy dokument CV po uzupełnieniu danych",
+            "Galeria dostępnych szablonów CV",
           ],
         },
 
         challengeAndSolution: {
           challenge: {
-            title: "Wyzwanie",
+            title: "Jeden kreator. Różne układy.",
 
             description:
-              "Najważniejszym wyzwaniem było uporządkowanie danych z wieloetapowego formularza i synchronizowanie ich z podglądem dokumentu bez komplikowania struktury aplikacji.",
+              "Głównym wyzwaniem było stworzenie jednego formularza obsługującego kilka różnych szablonów CV. Każdy layout może wykorzystywać inny zestaw informacji, dlatego osobne formularze prowadziłyby do duplikowania komponentów, walidacji i logiki zarządzania danymi.",
           },
 
           solution: {
-            title: "Rozwiązanie",
+            title: "Architektura oparta na schematach.",
 
             description:
-              "Oparłam formularz i podgląd na wspólnym modelu danych, podzieliłam proces na krótsze etapy i wydzieliłam szablony CV do osobnych komponentów.",
+              "Zastosowałam wspólny model CVData oraz centralną konfigurację templateSchemas, która określa pola i sekcje obsługiwane przez każdy layout. Formularz został podzielony na logiczne kroki przy użyciu React Hook Form i FormProvider.",
           },
 
           flow: {
-            template: "Szablon",
-            details: "Dane",
-            customize: "Personalizacja",
-            export: "Eksport",
+            template: "Wybór szablonu",
+            form: "Formularz",
+            validation: "Walidacja",
+            printPdf: "Druk / PDF",
           },
         },
 
         features: {
           items: {
-            guidedEditor: {
-              title: "Kreator krok po kroku",
+            dynamicTemplateConfiguration: {
+              title: "Dynamiczna konfiguracja szablonów",
 
               description:
-                "Formularz został podzielony na czytelne etapy, aby użytkownik mógł skupić się na jednej grupie informacji w danym momencie.",
+                "Formularz dostosowuje dostępne sekcje i pola do wybranego szablonu. Konfiguracja znajduje się w jednym miejscu zamiast w wielu komponentach.",
 
-              imageAlt: "Wieloetapowy kreator danych do CV",
+              imageAlt: "Widok konfiguracji i wyboru szablonów CV",
             },
 
-            livePreview: {
-              title: "Podgląd na żywo",
+            multiStepForm: {
+              title: "Formularz wieloetapowy",
 
               description:
-                "Każda zmiana w formularzu jest natychmiast widoczna w podglądzie dokumentu, dzięki czemu użytkownik przez cały czas widzi efekt swojej pracy.",
+                "Duża liczba informacji została podzielona na krótsze, logiczne etapy, dzięki czemu użytkownik nie musi wypełniać całego formularza na jednym ekranie.",
 
-              imageAlt: "Podgląd CV aktualizowany podczas edycji",
+              imageAlt: "Wieloetapowy formularz danych użytkownika",
             },
 
-            customizationAndExport: {
-              title: "Personalizacja i eksport",
+            responsiveTemplateCarousel: {
+              title: "Responsywna karuzela szablonów",
 
               description:
-                "Użytkownik może wybrać szablon, dopasować wygląd dokumentu i zapisać ukończone CV jako plik PDF.",
+                "Liczba widocznych szablonów oraz zakres przesuwania karuzeli dostosowują się do szerokości ekranu.",
 
-              imageAlt: "Personalizacja wyglądu i eksport CV do PDF",
+              imageAlt: "Responsywna karuzela dostępnych szablonów CV",
+            },
+
+            printReadyCv: {
+              title: "CV gotowe do druku",
+
+              description:
+                "Gotowy dokument można wydrukować lub zapisać jako PDF za pomocą systemowego okna drukowania przeglądarki.",
+
+              imageAlt:
+                "Gotowe CV przygotowane do wydruku lub zapisania jako PDF",
             },
           },
         },
 
         technicalDecisions: {
           title: {
-            first: "Prosta struktura.",
-            second: "Czytelny proces.",
+            first: "Zbudowany",
+            second: "z myślą o rozwoju.",
           },
 
           items: {
-            sharedDataModel: {
-              title: "Wspólny model danych",
+            schemaDrivenTemplates: {
+              title: "Szablony oparte na schematach",
 
               description:
-                "Formularz oraz podgląd dokumentu korzystają z tego samego modelu danych, dzięki czemu zawartość CV pozostaje zsynchronizowana podczas edycji.",
+                "Konfiguracja templateSchemas określa pola i sekcje wykorzystywane przez każdy layout. Dodanie kolejnego szablonu nie wymaga tworzenia osobnego formularza.",
             },
 
-            stepBasedForm: {
-              title: "Formularz podzielony na etapy",
+            typedDataModel: {
+              title: "Typowany model danych",
 
               description:
-                "Duży formularz został rozbity na mniejsze sekcje, aby uprościć nawigację i ograniczyć liczbę informacji wyświetlanych jednocześnie.",
+                "Wspólny model CVData zapewnia spójną strukturę informacji. Wykorzystanie keyof CVData pozwala TypeScriptowi wykrywać nieprawidłowe nazwy pól.",
             },
 
-            reusableTemplates: {
-              title: "Reużywalne szablony",
+            sharedFormContext: {
+              title: "Wspólny kontekst formularza",
 
               description:
-                "Każdy szablon CV jest osobnym komponentem, który otrzymuje te same dane i przedstawia je w innym układzie wizualnym.",
+                "React Hook Form i FormProvider pozwalają dzielić formularz na niezależne kroki bez ręcznego przekazywania stanu przez wiele poziomów komponentów.",
             },
 
-            responsiveInterface: {
-              title: "Responsywny interfejs",
+            printStyles: {
+              title: "Style drukowania",
 
               description:
-                "Układ formularza, wybór szablonu i podgląd dokumentu dostosowują się do szerokości ekranu, zachowując czytelność również na mniejszych urządzeniach.",
+                "Dedykowane style drukowania ukrywają elementy interfejsu i przygotowują dokument do wydrukowania lub zapisania jako PDF.",
             },
           },
         },
 
         process: {
           before: {
-            label: "Przed",
-
-            title: "Zbyt wiele elementów na małym ekranie.",
+            label: "Początek",
+            category: "Projektowanie ścieżki użytkownika",
+            title: "Działająca wersja.",
 
             description:
-              "Pierwsza wersja prezentowała kilka szablonów obok siebie, co działało na desktopie, ale na urządzeniach mobilnych powodowało zatłoczony i niewygodny układ.",
+              "Pierwsza wersja projektu koncentrowała się na zbudowaniu kompletnej ścieżki użytkownika i ponownym wejściu w regularną pracę z Reactem i TypeScriptem. Część logiki była silniej powiązana z komponentami.",
 
-            imageAlt: "Pierwsza wersja wyboru szablonów CV",
+            imageAlt: "Pierwsza wersja formularza CV Maker",
           },
 
           after: {
-            label: "Po",
-
-            title: "Responsywny wybór szablonu.",
+            label: "Iteracja",
+            category: "Dopracowanie architektury",
+            title: "Uporządkowany system.",
 
             description:
-              "Zmieniłam wybór szablonów w responsywny carousel, który pokazuje kilka propozycji na większych ekranach i jeden skoncentrowany widok na telefonie.",
+              "W kolejnych iteracjach rozdzieliłam odpowiedzialności, wprowadziłam wspólny model danych, centralną konfigurację szablonów oraz reużywalne komponenty formularza.",
 
-            imageAlt: "Responsywny carousel wyboru szablonów CV",
+            imageAlt: "Uporządkowana wieloetapowa wersja CV Maker",
           },
         },
 
         result: {
           stats: {
-            steps: "Etapy kreatora",
-            templates: "Szablony CV",
-            preview: "Podgląd na żywo",
-            export: "Eksport do PDF",
+            templates: "Szablonów",
+            steps: "Główne kroki",
+            dataModel: "Wspólny model danych",
+            export: "Druk / zapis",
           },
 
           description:
-            "Powstała kompletna aplikacja frontendowa prowadząca użytkownika od wyboru szablonu i uzupełnienia danych po personalizację wyglądu oraz eksport gotowego dokumentu.",
+            "Powstał skalowalny kreator CV, w którym pięć szablonów korzysta z jednego modelu danych i wspólnego formularza. Użytkownik przechodzi przez czytelny proces, a następnie może wydrukować dokument lub zapisać go jako PDF.",
 
           lesson:
-            "Jako pierwszy projekt po powrocie do programowania CV Maker pozwolił mi odbudować swobodę pracy z Reactem i TypeScriptem oraz przećwiczyć zarządzanie stanem formularza, strukturę komponentów i responsywne układy.",
+            "CV Maker był projektem, który wyznaczył mój powrót do regularnego programowania. Pozwolił mi odbudować warsztat techniczny, uporządkować wiedzę i przygotować podstawę do realizacji kolejnych, bardziej rozbudowanych projektów.",
         },
       },
     },
@@ -613,7 +623,7 @@ export const caseStudies = {
           },
 
           description:
-            "An application that guides users through creating a polished CV with live preview, visual customization and PDF export.",
+            "A responsive, multi-step CV builder that guides users from template selection to printing the finished document or saving it as a PDF. It was my first project after returning to software development following a career break.",
 
           actions: {
             demo: "View live demo",
@@ -640,154 +650,163 @@ export const caseStudies = {
           images: {
             desktopAlt: "CV Maker application displayed on a desktop screen",
 
-            mobileAlt: "Mobile interface of the CV Maker application",
+            mobileAlt: "Mobile view of the CV Maker multi-step form",
           },
         },
 
         overview: {
           title: {
-            first: "From blank page",
-            second: "to finished CV.",
+            first: "One form.",
+            second: "Multiple templates.",
           },
 
           description:
-            "CV Maker was my first project after returning to frontend development. I created it to rebuild my programming routine, return to React and TypeScript, and complete an entire frontend application from idea to working product.",
+            "CV Maker was my first independent project after returning to software development. The application guides users through template selection, data entry and preparation of the finished document. A shared data model and one form support every available CV layout.",
 
           imageAlts: [
             "Multi-step CV creation form",
-            "Document preview updating in real time",
-            "CV template selection interface",
+            "Finished CV document after completing the form",
+            "Gallery of available CV templates",
           ],
         },
 
         challengeAndSolution: {
           challenge: {
-            title: "The challenge",
+            title: "One builder. Different layouts.",
 
             description:
-              "The main challenge was organizing data from a multi-step form and keeping the document preview synchronized without making the application structure unnecessarily complex.",
+              "The main challenge was creating one form that could support several CV templates. Each layout may use a different set of information, so separate forms would duplicate components, validation rules and data-management logic.",
           },
 
           solution: {
-            title: "The solution",
+            title: "Schema-driven architecture.",
 
             description:
-              "I based both the form and the preview on a shared data model, divided the process into smaller stages and separated the CV templates into reusable components.",
+              "I introduced a shared CVData model and a central templateSchemas configuration that defines the fields and sections supported by each layout. The form was divided into logical steps using React Hook Form and FormProvider.",
           },
 
           flow: {
             template: "Template",
-            details: "Details",
-            customize: "Customize",
-            export: "Export",
+            form: "Form",
+            validation: "Validation",
+            printPdf: "Print / PDF",
           },
         },
 
         features: {
           items: {
-            guidedEditor: {
-              title: "Guided editor",
+            dynamicTemplateConfiguration: {
+              title: "Dynamic template configuration",
 
               description:
-                "The form is divided into clear stages so users can focus on one group of information at a time.",
+                "The form adapts its available sections and fields to the selected template. The configuration is kept in one place instead of being distributed across multiple components.",
 
-              imageAlt: "Multi-step CV data editor",
+              imageAlt: "CV template configuration and selection view",
             },
 
-            livePreview: {
-              title: "Live preview",
+            multiStepForm: {
+              title: "Multi-step form",
 
               description:
-                "Every form update is immediately reflected in the document preview, allowing users to see the final result while editing.",
+                "A large amount of information is divided into shorter, logical stages, so users do not have to complete the entire form on a single screen.",
 
-              imageAlt: "CV preview updating during editing",
+              imageAlt: "Multi-step form for entering CV information",
             },
 
-            customizationAndExport: {
-              title: "Customize and export",
+            responsiveTemplateCarousel: {
+              title: "Responsive template carousel",
 
               description:
-                "Users can select a template, customize the document’s appearance and save the finished CV as a PDF file.",
+                "The number of visible templates and the carousel movement range adapt to the available screen width.",
 
-              imageAlt: "CV appearance customization and PDF export",
+              imageAlt: "Responsive carousel of available CV templates",
+            },
+
+            printReadyCv: {
+              title: "Print-ready CV",
+
+              description:
+                "The finished document can be printed or saved as a PDF through the browser’s system print dialog.",
+
+              imageAlt: "Finished CV prepared for printing or saving as a PDF",
             },
           },
         },
 
         technicalDecisions: {
           title: {
-            first: "Simple structure.",
-            second: "Clear flow.",
+            first: "Built",
+            second: "to scale.",
           },
 
           items: {
-            sharedDataModel: {
-              title: "Shared data model",
+            schemaDrivenTemplates: {
+              title: "Schema-driven templates",
 
               description:
-                "The form and document preview use the same data model, keeping the CV content synchronized throughout the editing process.",
+                "The templateSchemas configuration defines the fields and sections used by each layout. Adding another template does not require building a separate form.",
             },
 
-            stepBasedForm: {
-              title: "Step-based form",
+            typedDataModel: {
+              title: "Typed data model",
 
               description:
-                "The large form is divided into smaller sections to simplify navigation and reduce the amount of information displayed at once.",
+                "The shared CVData model provides a consistent information structure. Using keyof CVData allows TypeScript to detect invalid field names.",
             },
 
-            reusableTemplates: {
-              title: "Reusable templates",
+            sharedFormContext: {
+              title: "Shared form context",
 
               description:
-                "Each CV template is a separate component that receives the same document data and presents it through a different visual layout.",
+                "React Hook Form and FormProvider allow the form to be divided into independent steps without manually passing state through multiple component levels.",
             },
 
-            responsiveInterface: {
-              title: "Responsive interface",
+            printStyles: {
+              title: "Print styles",
 
               description:
-                "The editor, template selector and document preview adapt to different screen sizes while remaining readable on smaller devices.",
+                "Dedicated print styles hide interface controls and prepare the document for printing or saving as a PDF.",
             },
           },
         },
 
         process: {
           before: {
-            label: "Before",
-
-            title: "Too many elements on a small screen.",
+            label: "Starting point",
+            category: "User flow",
+            title: "The first working version.",
 
             description:
-              "The first version displayed several templates side by side. It worked on desktop but created a crowded and difficult-to-use layout on mobile devices.",
+              "The first version focused on building a complete user flow and returning to regular work with React and TypeScript. Some of the logic was more tightly coupled to individual components.",
 
-            imageAlt: "First version of the CV template selector",
+            imageAlt: "First version of the CV Maker form",
           },
 
           after: {
-            label: "After",
-
-            title: "Responsive template selection.",
+            label: "Iteration",
+            category: "Architecture refinement",
+            title: "A structured system.",
 
             description:
-              "I changed the selector into a responsive carousel that displays several options on larger screens and one focused template on mobile.",
+              "In later iterations, I separated responsibilities and introduced a shared data model, central template configuration and reusable form components.",
 
-            imageAlt: "Responsive CV template selection carousel",
+            imageAlt: "Structured multi-step version of CV Maker",
           },
         },
 
         result: {
           stats: {
-            steps: "Editor steps",
-            templates: "CV templates",
-            preview: "Live preview",
-            export: "PDF export",
+            templates: "Templates",
+            steps: "Main steps",
+            dataModel: "Shared data model",
+            export: "Print / save",
           },
 
           description:
-            "The result is a complete frontend application that guides users from selecting a template and entering their information to customizing and exporting a finished CV.",
+            "The result is a scalable CV builder in which five templates use one shared data model and form. Users move through a clear process before printing the document or saving it as a PDF.",
 
           lesson:
-            "As my first project after returning to development, CV Maker helped me rebuild confidence with React and TypeScript while practicing form state, component structure and responsive layouts.",
+            "CV Maker marked my return to regular software development. It helped me rebuild my technical workflow, consolidate my knowledge and create a foundation for the more advanced projects that followed.",
         },
       },
     },

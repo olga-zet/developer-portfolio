@@ -1,81 +1,31 @@
 // ProjectCaseStudy.data.ts
 
-export type TechnicalDecisionIcon =
-  | "layers"
-  | "code"
-  | "database"
-  | "lock"
-  | "form"
-  | "layout";
+import CvMakerArchitectureEn from "../../../public/cv-maker/architecture-refinement-en.png";
+import CvMakerArchitecturePl from "../../../public/cv-maker/architecture-refinement-pl.png";
+import CvMakerFinalCv from "../../../public/cv-maker/final-cv.png";
+import CvMakerFormStep from "../../../public/cv-maker/form-step.png";
+import CvMakerHero from "../../../public/cv-maker/cv-maker-hero.png";
+import CvMakerMultiStepForm from "../../../public/cv-maker/multi-step-form.png";
+import CvMakerPrintReadyCv from "../../../public/cv-maker/print-ready-cv.png";
+import CvMakerResponsiveCarousel from "../../../public/cv-maker/responsive-carousel.png";
+import CvMakerTemplateSelection from "../../../public/cv-maker/template-selection.png";
+import CvMakerUserFlow from "../../../public/cv-maker/user-flow.png";
 
-type ProjectId = "tarotApp" | "cvMaker";
+import {
+  CircleCheckBig,
+  ClipboardPenLine,
+  FileDown,
+  Layers3,
+  LayoutGrid,
+  LayoutTemplate,
+  MessageCircleQuestion,
+  Sparkles,
+} from "lucide-react";
 
-type ProjectFlowItem = {
-  id: string;
-  number: string;
-};
+import type { ProjectDefinition } from "./ProjectCaseStudy.types.ts";
 
-type ProjectFeature = {
-  id: string;
-  number: string;
-  image: string;
-};
-
-type TechnicalDecision = {
-  id: string;
-  icon: TechnicalDecisionIcon;
-};
-
-type ProjectStat = {
-  id: string;
-  value: string;
-};
-
-type ProjectDefinition = {
-  id: ProjectId;
-  slug: string;
-  number: string;
-
-  /**
-   * Obraz używany na karcie projektu
-   * na stronie głównej portfolio.
-   */
-  thumbnail: string;
-
-  demoUrl: string;
-
-  /**
-   * Może prowadzić np. do sekcji kontaktowej,
-   * gdy repozytorium jest prywatne.
-   */
-  repositoryRequestUrl?: string;
-
-  tags: readonly string[];
-
-  images: {
-    hero: {
-      desktop: string;
-      mobile: string;
-    };
-
-    overview: readonly string[];
-
-    process: {
-      before: string;
-      after: string;
-    };
-
-    result?: string;
-  };
-
-  flow: readonly ProjectFlowItem[];
-
-  features: readonly ProjectFeature[];
-
-  technicalDecisions: readonly TechnicalDecision[];
-
-  stats: readonly ProjectStat[];
-};
+export const getArchitectureImage = (language: string): string =>
+  language.startsWith("pl") ? CvMakerArchitecturePl : CvMakerArchitectureEn;
 
 export const PROJECTS_BY_SLUG = {
   "tarot-app": {
@@ -100,7 +50,6 @@ export const PROJECTS_BY_SLUG = {
     images: {
       hero: {
         desktop: "/images/projects/tarot-app/hero-desktop.webp",
-        mobile: "/images/projects/tarot-app/hero-mobile.webp",
       },
 
       overview: [
@@ -121,18 +70,22 @@ export const PROJECTS_BY_SLUG = {
       {
         id: "question",
         number: "01",
+        icon: MessageCircleQuestion,
       },
       {
         id: "spread",
         number: "02",
+        icon: LayoutGrid,
       },
       {
         id: "cards",
         number: "03",
+        icon: Layers3,
       },
       {
         id: "interpretation",
         number: "04",
+        icon: Sparkles,
       },
     ],
 
@@ -200,7 +153,7 @@ export const PROJECTS_BY_SLUG = {
 
     thumbnail: "/images/projects/cv-maker/thumbnail.webp",
 
-    demoUrl: "https://your-cv-maker-demo.com",
+    demoUrl: "https://cv-maker-five-brown.vercel.app/",
     repositoryRequestUrl: "/#contact",
 
     tags: [
@@ -213,92 +166,96 @@ export const PROJECTS_BY_SLUG = {
 
     images: {
       hero: {
-        desktop: "/images/projects/cv-maker/hero-desktop.webp",
-        mobile: "/images/projects/cv-maker/hero-mobile.webp",
+        desktop: CvMakerHero,
       },
 
-      overview: [
-        "/images/projects/cv-maker/overview-editor.webp",
-        "/images/projects/cv-maker/overview-preview.webp",
-        "/images/projects/cv-maker/overview-templates.webp",
-      ],
+      overview: [CvMakerTemplateSelection, CvMakerFormStep, CvMakerFinalCv],
 
       process: {
-        before: "/images/projects/cv-maker/process-before.webp",
-        after: "/images/projects/cv-maker/process-after.webp",
+        before: CvMakerUserFlow,
+        after: CvMakerArchitecturePl,
       },
 
-      result: "/images/projects/cv-maker/result-decoration.webp",
+      result: "/images/projects/cv-maker/process-before.webp",
     },
 
     flow: [
       {
         id: "template",
         number: "01",
+        icon: LayoutTemplate,
       },
       {
-        id: "details",
+        id: "form",
         number: "02",
+        icon: ClipboardPenLine,
       },
       {
-        id: "customize",
+        id: "validation",
         number: "03",
+        icon: CircleCheckBig,
       },
       {
-        id: "export",
+        id: "printPdf",
         number: "04",
+        icon: FileDown,
       },
     ],
 
     features: [
       {
-        id: "guidedEditor",
+        id: "dynamicTemplateConfiguration",
         number: "01",
-        image: "/images/projects/cv-maker/guided-editor.webp",
+        image: CvMakerTemplateSelection,
       },
       {
-        id: "livePreview",
+        id: "multiStepForm",
         number: "02",
-        image: "/images/projects/cv-maker/live-preview.webp",
+        image: CvMakerMultiStepForm,
       },
       {
-        id: "customizationAndExport",
+        id: "responsiveTemplateCarousel",
         number: "03",
-        image: "/images/projects/cv-maker/customization-export.webp",
+        image: CvMakerResponsiveCarousel,
+      },
+      {
+        id: "printReadyCv",
+        number: "04",
+        image: CvMakerPrintReadyCv,
       },
     ],
 
     technicalDecisions: [
       {
-        id: "sharedDataModel",
-        icon: "database",
-      },
-      {
-        id: "stepBasedForm",
-        icon: "form",
-      },
-      {
-        id: "reusableTemplates",
+        id: "schemaDrivenTemplates",
         icon: "layers",
       },
       {
-        id: "responsiveInterface",
+        id: "typedDataModel",
+        icon: "code",
+      },
+      {
+        id: "sharedFormContext",
+        icon: "form",
+      },
+      {
+        id: "printStyles",
         icon: "layout",
       },
     ],
 
     stats: [
       {
+        id: "templates",
+        value: "5",
+      },
+      {
         id: "steps",
         value: "3",
       },
       {
-        id: "templates",
-        value: "3",
-      },
-      {
-        id: "preview",
-        value: "Live",
+        id: "dataModel",
+        value: "1",
       },
       {
         id: "export",
@@ -315,8 +272,4 @@ export type ProjectCaseStudyData = (typeof PROJECTS_BY_SLUG)[ProjectSlug];
 export const isProjectSlug = (slug: string): slug is ProjectSlug =>
   Object.prototype.hasOwnProperty.call(PROJECTS_BY_SLUG, slug);
 
-/**
- * Przydatne na stronie głównej,
- * gdy chcesz mapować wszystkie projekty.
- */
 export const PROJECTS = Object.values(PROJECTS_BY_SLUG);

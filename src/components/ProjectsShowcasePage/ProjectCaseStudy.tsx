@@ -1,22 +1,11 @@
 import { Fragment } from "react";
-import type { LucideIcon } from "lucide-react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-  Code2,
-  Database,
-  Layers3,
-  LayoutTemplate,
-  ListChecks,
-  LockKeyhole,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import {
+  getArchitectureImage,
   type ProjectCaseStudyData,
   PROJECTS,
-  type TechnicalDecisionIcon,
 } from "./ProjectCaseStudy.data.ts";
 
 import {
@@ -24,6 +13,7 @@ import {
   ChallengeColumn,
   ChallengeFlow,
   ChallengeFlowArrow,
+  ChallengeFlowIcon,
   ChallengeFlowItem,
   ChallengeFlowLabel,
   ChallengeFlowNumber,
@@ -53,8 +43,6 @@ import {
   HeroImage,
   HeroImageDecoration,
   HeroImageFrame,
-  HeroImageMobile,
-  HeroImageMobileFrame,
   HeroMeta,
   HeroMetaItem,
   HeroMetaLabel,
@@ -75,6 +63,7 @@ import {
   PrimaryButton,
   ProcessArrow,
   ProcessCard,
+  ProcessCategory,
   ProcessContent,
   ProcessImage,
   ProcessImageFrame,
@@ -97,24 +86,18 @@ import {
   StatValue,
   TechnicalHeader,
 } from "./ProjectCaseStudy.styled.ts";
-
-type ProjectCaseStudyProps = {
-  project: ProjectCaseStudyData;
-};
-
-const TECHNICAL_DECISION_ICONS: Record<TechnicalDecisionIcon, LucideIcon> = {
-  layers: Layers3,
-  code: Code2,
-  database: Database,
-  lock: LockKeyhole,
-  form: ListChecks,
-  layout: LayoutTemplate,
-};
-
-const HERO_META_KEYS = ["role", "year", "type"] as const;
+import {
+  HERO_META_KEYS,
+  type ProjectCaseStudyProps,
+  TECHNICAL_DECISION_ICONS,
+} from "./ProjectCaseStudy.types.ts";
 
 export const ProjectCaseStudy = ({ project }: ProjectCaseStudyProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const language = i18n.resolvedLanguage ?? i18n.language;
+
+  const resultImage = getArchitectureImage(language);
 
   const projectTranslationKey = `caseStudies.items.${project.id}`;
 
@@ -216,15 +199,20 @@ export const ProjectCaseStudy = ({ project }: ProjectCaseStudyProps) => {
               <HeroImage
                 src={project.images.hero.desktop}
                 alt={translateProject("hero.images.desktopAlt")}
+                onLoad={() => {
+                  console.log(
+                    "Hero image loaded:",
+                    project.images.hero.desktop,
+                  );
+                }}
+                onError={(event) => {
+                  console.error(
+                    "Hero image failed:",
+                    event.currentTarget.src,
+                    project.images.hero.desktop,
+                  );
+                }}
               />
-
-              <HeroImageMobileFrame>
-                <HeroImageMobile
-                  src={project.images.hero.mobile}
-                  alt={translateProject("hero.images.mobileAlt")}
-                />
-              </HeroImageMobileFrame>
-
               <HeroImageDecoration aria-hidden="true" />
             </HeroImageFrame>
           </HeroContent>
@@ -312,25 +300,33 @@ export const ProjectCaseStudy = ({ project }: ProjectCaseStudyProps) => {
           </ChallengeGrid>
 
           <ChallengeFlow>
-            {project.flow.map((flowItem, index) => (
-              <Fragment key={flowItem.id}>
-                <ChallengeFlowItem>
-                  <ChallengeFlowNumber>{flowItem.number}</ChallengeFlowNumber>
+            {project.flow.map((flowItem, index) => {
+              const FlowIcon = flowItem.icon;
 
-                  <ChallengeFlowLabel>
-                    {translateProject(
-                      `challengeAndSolution.flow.${flowItem.id}`,
-                    )}
-                  </ChallengeFlowLabel>
-                </ChallengeFlowItem>
+              return (
+                <Fragment key={flowItem.id}>
+                  <ChallengeFlowItem>
+                    <ChallengeFlowNumber>{flowItem.number}</ChallengeFlowNumber>
 
-                {index < project.flow.length - 1 && (
-                  <ChallengeFlowArrow aria-hidden="true">
-                    <ArrowRight size={22} />
-                  </ChallengeFlowArrow>
-                )}
-              </Fragment>
-            ))}
+                    <ChallengeFlowIcon aria-hidden="true">
+                      <FlowIcon size={26} strokeWidth={1.7} />
+                    </ChallengeFlowIcon>
+
+                    <ChallengeFlowLabel>
+                      {translateProject(
+                        `challengeAndSolution.flow.${flowItem.id}`,
+                      )}
+                    </ChallengeFlowLabel>
+                  </ChallengeFlowItem>
+
+                  {index < project.flow.length - 1 && (
+                    <ChallengeFlowArrow aria-hidden="true">
+                      <ArrowRight size={22} />
+                    </ChallengeFlowArrow>
+                  )}
+                </Fragment>
+              );
+            })}
           </ChallengeFlow>
         </ContentContainer>
       </ChallengeSection>
@@ -432,6 +428,10 @@ export const ProjectCaseStudy = ({ project }: ProjectCaseStudyProps) => {
                 {translateProject("process.before.label")}
               </ProcessLabel>
 
+              <ProcessCategory>
+                {translateProject("process.before.category")}
+              </ProcessCategory>
+
               <ProcessTitle>
                 {translateProject("process.before.title")}
               </ProcessTitle>
@@ -455,6 +455,10 @@ export const ProjectCaseStudy = ({ project }: ProjectCaseStudyProps) => {
                 {translateProject("process.after.label")}
               </ProcessLabel>
 
+              <ProcessCategory>
+                {translateProject("process.after.category")}
+              </ProcessCategory>
+
               <ProcessTitle>
                 {translateProject("process.after.title")}
               </ProcessTitle>
@@ -463,7 +467,7 @@ export const ProjectCaseStudy = ({ project }: ProjectCaseStudyProps) => {
 
               <ProcessImageFrame>
                 <ProcessImage
-                  src={project.images.process.after}
+                  src={resultImage}
                   alt={translateProject("process.after.imageAlt")}
                 />
               </ProcessImageFrame>
