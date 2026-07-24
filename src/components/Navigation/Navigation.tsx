@@ -17,6 +17,7 @@ import {
 import { NAV_ITEMS } from "./Navigation.data.ts";
 import { LanguageToggle } from "../LanguageToggle/LanguageToggle.tsx";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle.tsx";
+import { CvDownloadButton } from "../CvDownloadButton/CvDownloadButton.tsx";
 
 const BRAND_INITIALS = "OZ";
 const BRAND_LABEL = "Olga Załuska portfolio";
@@ -70,6 +71,7 @@ export const Navigation = () => {
         </NavLinks>
 
         <NavActions>
+          <CvDownloadButton />
           <ThemeToggle />
           <LanguageToggle />
 
