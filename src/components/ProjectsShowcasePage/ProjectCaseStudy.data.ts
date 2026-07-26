@@ -11,6 +11,13 @@ import CvMakerResponsiveCarousel from "../../../public/cv-maker/responsive-carou
 import CvMakerTemplateSelection from "../../../public/cv-maker/template-selection.png";
 import CvMakerUserFlow from "../../../public/cv-maker/user-flow.png";
 
+import TarotHeroDesktop from "../../../public/tarot-app/hero-desktop.png";
+import TarotOverviewSpread from "../../../public/tarot-app/overview-spread.png";
+import TarotOverviewReading from "../../../public/tarot-app/overview-reading.png";
+import TarotOverviewLibrary from "../../../public/tarot-app/overview-library.png";
+import TarotCardSelection from "../../../public/tarot-app/card-selection.png";
+import TarotInterpretation from "../../../public/tarot-app/interpretation.png";
+
 import {
   CircleCheckBig,
   ClipboardPenLine,
@@ -33,7 +40,7 @@ export const PROJECTS_BY_SLUG = {
     slug: "tarot-app",
     number: "01",
 
-    thumbnail: "/images/projects/tarot-app/thumbnail.webp",
+    thumbnail: "",
 
     demoUrl: "https://your-tarot-app-demo.com",
     repositoryRequestUrl: "/#contact",
@@ -49,21 +56,21 @@ export const PROJECTS_BY_SLUG = {
 
     images: {
       hero: {
-        desktop: "/images/projects/tarot-app/hero-desktop.webp",
+        desktop: TarotHeroDesktop,
       },
 
       overview: [
-        "/images/projects/tarot-app/overview-spread.webp",
-        "/images/projects/tarot-app/overview-reading.webp",
-        "/images/projects/tarot-app/overview-library.webp",
+        TarotOverviewSpread,
+        TarotOverviewReading,
+        TarotOverviewLibrary,
       ],
 
       process: {
-        before: "/images/projects/tarot-app/process-before.webp",
-        after: "/images/projects/tarot-app/process-after.webp",
+        before: TarotCardSelection,
+        after: TarotInterpretation,
       },
 
-      result: "/images/projects/tarot-app/result-decoration.webp",
+      result: "",
     },
 
     flow: [
@@ -93,28 +100,28 @@ export const PROJECTS_BY_SLUG = {
       {
         id: "cardSelection",
         number: "01",
-        image: "/images/projects/tarot-app/card-selection.webp",
+        image: TarotCardSelection,
       },
       {
         id: "aiInterpretation",
         number: "02",
-        image: "/images/projects/tarot-app/interpretation.webp",
+        image: TarotInterpretation,
       },
       {
         id: "celticCross",
         number: "03",
-        image: "/images/projects/tarot-app/celtic-cross.webp",
+        image: TarotOverviewSpread,
       },
     ],
 
     technicalDecisions: [
       {
-        id: "configDrivenSpreads",
-        icon: "layers",
+        id: "viewModelMapping",
+        icon: "code",
       },
       {
         id: "typedModels",
-        icon: "code",
+        icon: "layers",
       },
       {
         id: "apiLayer",

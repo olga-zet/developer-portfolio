@@ -29,7 +29,7 @@ export const caseStudies = {
           },
 
           description:
-            "Cyfrowe doświadczenie inspirowane tarotem, łączące wybór kart, rozbudowane rozkłady i interpretacje generowane przez AI.",
+            "Pełnostackowa aplikacja tarotowa, która prowadzi użytkownika od pytania i wyboru kart do kontekstowej interpretacji generowanej przez AI.",
 
           actions: {
             demo: "Zobacz demo",
@@ -62,15 +62,15 @@ export const caseStudies = {
 
         overview: {
           title: {
-            first: "Więcej niż",
-            second: "losowanie kart.",
+            first: "Od pytania.",
+            second: "Do jednej historii.",
           },
 
           description:
-            "Aplikacja prowadzi użytkownika przez cały proces odczytu — od zadania pytania i wyboru rozkładu po wybór kart oraz otrzymanie interpretacji dopasowanej do ich pozycji i orientacji.",
+            "Aplikacja obsługuje odczyty jednej, trzech i dziesięciu kart. Prowadzi użytkownika przez wybór rozkładu i kart, a następnie prezentuje interpretację uwzględniającą pytanie, pozycję oraz orientację każdej karty.",
 
           imageAlts: [
-            "Interfejs rozkładu Krzyż Celtycki",
+            "Interfejs wyboru rozkładu tarotowego",
             "Widok interpretacji odczytu tarotowego",
             "Biblioteka kart tarota",
           ],
@@ -78,17 +78,17 @@ export const caseStudies = {
 
         challengeAndSolution: {
           challenge: {
-            title: "Wyzwanie",
+            title: "Wiele stanów. Jeden spójny odczyt.",
 
             description:
-              "Aplikacja musiała obsługiwać kilka rodzajów rozkładów, różne pozycje kart, znaczenia proste i odwrócone oraz wieloetapowy proces odczytu bez przeciążania użytkownika.",
+              "Największym wyzwaniem było połączenie kilku rodzajów rozkładów, pozycji kart, orientacji prostych i odwróconych, sekwencji wyboru oraz odpowiedzi AI w jeden czytelny proces użytkownika.",
           },
 
           solution: {
-            title: "Rozwiązanie",
+            title: "Rozdzielone etapy i typowane dane.",
 
             description:
-              "Oddzieliłam konfigurację rozkładów od warstwy prezentacji i stworzyłam uporządkowany proces prowadzący użytkownika przez wybór pytania, rozkładu, kart i interpretacji.",
+              "Podzieliłam proces na pytanie, wybór rozkładu, wybór kart i interpretację. Wynik zwracany przez backend jest mapowany do typowanych modeli widoku, dzięki czemu komponenty odpowiadają głównie za prezentację danych.",
           },
 
           flow: {
@@ -102,28 +102,29 @@ export const caseStudies = {
         features: {
           items: {
             cardSelection: {
-              title: "Wybór kart",
+              title: "Kontrolowany wybór kart",
 
               description:
-                "Animowany wybór kart z obsługą pozycji prostych i odwróconych oraz kontrolowaną kolejnością odkrywania.",
+                "Animowany interfejs prowadzi użytkownika przez wybieranie i odkrywanie kart w określonej kolejności. Każda karta może pojawić się w pozycji prostej lub odwróconej.",
 
-              imageAlt: "Animowany interfejs wyboru kart tarota",
+              imageAlt: "Animowany interfejs wyboru i odkrywania kart tarota",
             },
 
             aiInterpretation: {
-              title: "Interpretacja AI",
+              title: "Interpretacja zależna od kontekstu",
 
               description:
-                "Interpretacja uwzględnia pytanie użytkownika, znaczenie karty, jej orientację oraz pozycję zajmowaną w wybranym rozkładzie.",
+                "Interpretacja uwzględnia pytanie użytkownika, znaczenie karty, jej orientację oraz pozycję w rozkładzie. Wynik zawiera opisy poszczególnych kart, wspólną syntezę i końcową wskazówkę.",
 
-              imageAlt: "Widok interpretacji tarotowej generowanej przez AI",
+              imageAlt:
+                "Kontekstowa interpretacja tarotowa generowana przez AI",
             },
 
             celticCross: {
-              title: "Krzyż Celtycki",
+              title: "Różne modele odczytu",
 
               description:
-                "Rozbudowany rozkład dziesięciu kart z własną konfiguracją pozycji, znaczeń i kolejności odkrywania.",
+                "Aplikacja obsługuje szybki odczyt jednej karty, rozkład trzech kart oraz rozbudowany, dziesięciokartowy Krzyż Celtycki. Każdy wariant ma własny sposób prezentacji wyniku.",
 
               imageAlt: "Dziesięciokartowy rozkład Krzyż Celtycki",
             },
@@ -132,62 +133,62 @@ export const caseStudies = {
 
         technicalDecisions: {
           title: {
-            first: "Zbudowana z myślą",
-            second: "o złożoności.",
+            first: "Złożona logika.",
+            second: "Czytelne komponenty.",
           },
 
           items: {
-            configDrivenSpreads: {
-              title: "Rozkłady oparte na konfiguracji",
+            viewModelMapping: {
+              title: "Modele widoku dla interpretacji",
 
               description:
-                "Każdy rozkład jest opisany przez osobną konfigurację danych, dzięki czemu jego pozycje i kolejność kart nie są zapisane bezpośrednio w komponentach interfejsu.",
+                "Dane odczytu są mapowane do osobnych, typowanych modeli widoku przed przekazaniem ich do komponentów. Interfejs otrzymuje przygotowane nazwy, pozycje, interpretacje, porady i informacje o orientacji kart.",
             },
 
             typedModels: {
-              title: "Typowane modele aplikacji",
+              title: "Typowany przepływ danych",
 
               description:
-                "Modele TypeScript opisują karty, rozkłady, pozycje, orientacje oraz odpowiedzi API, zapewniając spójność danych pomiędzy kolejnymi etapami odczytu.",
+                "Modele TypeScript opisują karty, odczyty, orientacje, wyniki interpretacji oraz odpowiedzi API. Pozwala to zachować spójność danych pomiędzy frontendem, backendem i kolejnymi etapami procesu.",
             },
 
             apiLayer: {
-              title: "Oddzielna warstwa API",
+              title: "Frontend i dedykowane REST API",
 
               description:
-                "Frontend komunikuje się z dedykowanym backendem odpowiedzialnym za dane kart, generowanie odczytów i integrację z bazą danych.",
+                "Frontend komunikuje się z backendem Node.js i Express, który odpowiada za dane kart, integrację z bazą PostgreSQL oraz przygotowanie wyników odczytu.",
             },
 
             secureAi: {
-              title: "Bezpieczna integracja AI",
+              title: "AI po stronie serwera",
 
               description:
-                "Klucz API i logika budowania promptów pozostają po stronie serwera, dzięki czemu poufne dane nie są udostępniane w przeglądarce.",
+                "Klucz API oraz logika budowania kontekstu dla modelu AI pozostają na backendzie. Dzięki temu poufne dane nie są udostępniane w kodzie wykonywanym w przeglądarce.",
             },
           },
         },
 
         process: {
           before: {
-            label: "Przed",
-
-            title: "Zbyt wiele działo się jednocześnie.",
+            label: "Etap 01",
+            category: "Interakcja użytkownika",
+            title: "Od pytania do wybranych kart.",
 
             description:
-              "Pierwsza wersja odczytu prezentowała użytkownikowi zbyt dużo informacji w jednym momencie, przez co trudno było skupić się na kolejnych etapach.",
+              "Użytkownik zadaje pytanie, wybiera rodzaj rozkładu, a następnie odkrywa karty w kontrolowanej kolejności. Aplikacja zachowuje pozycję, orientację i kolejność każdej wybranej karty.",
 
-            imageAlt: "Pierwsza wersja interfejsu odczytu tarotowego",
+            imageAlt: "Proces wybierania kart w aplikacji tarotowej",
           },
 
           after: {
-            label: "Po",
-
-            title: "Prowadzony, sekwencyjny proces.",
+            label: "Etap 02",
+            category: "Przetwarzanie i prezentacja",
+            title: "Od danych do spójnej interpretacji.",
 
             description:
-              "W finalnej wersji karty są wybierane, odkrywane i interpretowane krok po kroku, dzięki czemu cały proces jest bardziej czytelny i angażujący.",
+              "Dane kart są łączone z pytaniem użytkownika, ich pozycjami i orientacjami. Wynik zostaje następnie przekształcony do modeli widoku i przedstawiony jako interpretacje kart, wspólna synteza oraz końcowa wskazówka.",
 
-            imageAlt: "Finalny sekwencyjny interfejs odczytu tarotowego",
+            imageAlt: "Widok kompletnej interpretacji odczytu tarotowego",
           },
         },
 
@@ -200,13 +201,12 @@ export const caseStudies = {
           },
 
           description:
-            "Finalna aplikacja łączy rozbudowaną logikę interfejsu, animacje, REST API, bazę danych, obsługę dwóch języków oraz interpretacje generowane przez AI.",
+            "Finalna aplikacja łączy wieloetapowy interfejs, animacje, typowane modele danych, REST API, bazę PostgreSQL, obsługę dwóch języków oraz kontekstowe interpretacje generowane przez AI.",
 
           lesson:
-            "Najważniejszą decyzją było oddzielenie konfiguracji rozkładów i logiki produktu od warstwy prezentacji, co ułatwiło rozwijanie kolejnych typów odczytów.",
+            "Najważniejszą decyzją było oddzielenie danych odczytu od sposobu ich prezentacji. Mapowanie odpowiedzi backendu do modeli widoku uprościło komponenty, ułatwiło obsługę brakujących danych i pozwoliło rozwijać różne typy interpretacji.",
         },
       },
-
       cvMaker: {
         hero: {
           label: "Case study",
@@ -435,7 +435,7 @@ export const caseStudies = {
           },
 
           description:
-            "A digital experience inspired by tarot, combining card selection, structured spreads and AI-generated interpretations.",
+            "A full-stack tarot application that guides users from a question and card selection to a contextual AI-generated interpretation.",
 
           actions: {
             demo: "View live demo",
@@ -468,15 +468,15 @@ export const caseStudies = {
 
         overview: {
           title: {
-            first: "More than",
-            second: "a card draw.",
+            first: "From a question.",
+            second: "To one story.",
           },
 
           description:
-            "The application guides users through the complete reading process — from entering a question and choosing a spread to selecting cards and receiving an interpretation based on their positions and orientations.",
+            "The application supports one-card, three-card and ten-card readings. It guides users through spread and card selection before presenting an interpretation based on the question, position and orientation of each card.",
 
           imageAlts: [
-            "Celtic Cross spread interface",
+            "Tarot spread selection interface",
             "Tarot reading interpretation view",
             "Tarot card library",
           ],
@@ -484,17 +484,17 @@ export const caseStudies = {
 
         challengeAndSolution: {
           challenge: {
-            title: "The challenge",
+            title: "Multiple states. One coherent reading.",
 
             description:
-              "The application needed to support several spread types, different card positions, upright and reversed meanings, and a multi-stage reading process without overwhelming the user.",
+              "The main challenge was combining several reading types, card positions, upright and reversed orientations, selection sequences and AI responses into one clear user flow.",
           },
 
           solution: {
-            title: "The solution",
+            title: "Separated stages and typed data.",
 
             description:
-              "I separated spread configuration from the presentation layer and created a structured flow that guides users through the question, spread, card selection and interpretation stages.",
+              "I divided the process into the question, spread selection, card selection and interpretation stages. Results returned by the backend are mapped into typed view models, allowing the components to focus primarily on presentation.",
           },
 
           flow: {
@@ -508,28 +508,28 @@ export const caseStudies = {
         features: {
           items: {
             cardSelection: {
-              title: "Card selection",
+              title: "Controlled card selection",
 
               description:
-                "Animated card selection with support for upright and reversed orientations and a controlled reveal sequence.",
+                "The animated interface guides users through selecting and revealing cards in a defined sequence. Each card may appear in an upright or reversed orientation.",
 
-              imageAlt: "Animated tarot card selection interface",
+              imageAlt: "Animated tarot card selection and reveal interface",
             },
 
             aiInterpretation: {
-              title: "AI interpretation",
+              title: "Context-aware interpretation",
 
               description:
-                "Each interpretation considers the user’s question, the meaning of the card, its orientation and its position within the selected spread.",
+                "Each interpretation considers the user’s question, the card meaning, its orientation and its position within the spread. The result includes individual card interpretations, a shared synthesis and final guidance.",
 
-              imageAlt: "AI-generated tarot interpretation view",
+              imageAlt: "Context-aware AI-generated tarot interpretation",
             },
 
             celticCross: {
-              title: "Celtic Cross",
+              title: "Different reading models",
 
               description:
-                "A complete ten-card spread with its own configuration of positions, meanings and reveal order.",
+                "The application supports a quick one-card reading, a three-card spread and a detailed ten-card Celtic Cross. Each variant has its own method of presenting the result.",
 
               imageAlt: "Ten-card Celtic Cross tarot spread",
             },
@@ -538,62 +538,62 @@ export const caseStudies = {
 
         technicalDecisions: {
           title: {
-            first: "Built for",
-            second: "complexity.",
+            first: "Complex logic.",
+            second: "Focused components.",
           },
 
           items: {
-            configDrivenSpreads: {
-              title: "Config-driven spreads",
+            viewModelMapping: {
+              title: "View models for interpretations",
 
               description:
-                "Each spread is defined through a separate data configuration, keeping its positions and card sequence outside the interface components.",
+                "Reading data is mapped into separate typed view models before being passed to the components. The interface receives prepared card names, positions, interpretations, advice and orientation data.",
             },
 
             typedModels: {
-              title: "Typed application models",
+              title: "Typed data flow",
 
               description:
-                "TypeScript models describe cards, spreads, positions, orientations and API responses, keeping data consistent throughout the reading flow.",
+                "TypeScript models describe cards, readings, orientations, interpretation results and API responses. This keeps data consistent across the frontend, backend and individual stages of the reading process.",
             },
 
             apiLayer: {
-              title: "Separated API layer",
+              title: "Frontend and dedicated REST API",
 
               description:
-                "The frontend communicates with a dedicated backend responsible for card data, reading generation and database integration.",
+                "The frontend communicates with a Node.js and Express backend responsible for card data, PostgreSQL integration and preparing reading results.",
             },
 
             secureAi: {
-              title: "Secure AI integration",
+              title: "Server-side AI integration",
 
               description:
-                "The API key and prompt-building logic remain on the server, preventing sensitive credentials from being exposed in the browser.",
+                "The API key and the logic responsible for building context for the AI model remain on the backend, preventing sensitive data from being exposed in browser code.",
             },
           },
         },
 
         process: {
           before: {
-            label: "Before",
-
-            title: "Too much happened at once.",
+            label: "Stage 01",
+            category: "User interaction",
+            title: "From a question to selected cards.",
 
             description:
-              "The first version of the reading displayed too much information at the same moment, making it difficult to focus on each stage of the experience.",
+              "Users enter a question, choose a reading type and reveal cards in a controlled sequence. The application preserves the position, orientation and order of every selected card.",
 
-            imageAlt: "First version of the tarot reading interface",
+            imageAlt: "Card selection process in the tarot application",
           },
 
           after: {
-            label: "After",
-
-            title: "A guided, sequential experience.",
+            label: "Stage 02",
+            category: "Processing and presentation",
+            title: "From data to a coherent interpretation.",
 
             description:
-              "In the final version, cards are selected, revealed and interpreted step by step, creating a clearer and more engaging reading flow.",
+              "Card data is combined with the user’s question, card positions and orientations. The result is then transformed into view models and presented as individual interpretations, a shared synthesis and final guidance.",
 
-            imageAlt: "Final sequential tarot reading interface",
+            imageAlt: "Complete tarot reading interpretation view",
           },
         },
 
@@ -606,10 +606,10 @@ export const caseStudies = {
           },
 
           description:
-            "The final application combines complex interface logic, animations, a REST API, database integration, multilingual content and AI-generated interpretations.",
+            "The final application combines a multi-stage interface, animations, typed data models, a REST API, PostgreSQL integration, multilingual support and contextual AI-generated interpretations.",
 
           lesson:
-            "The most important decision was separating spread configuration and product logic from the presentation layer, making it easier to develop additional reading types.",
+            "The most important decision was separating reading data from its presentation. Mapping backend responses into view models simplified the components, improved handling of incomplete data and made different interpretation types easier to develop.",
         },
       },
 
