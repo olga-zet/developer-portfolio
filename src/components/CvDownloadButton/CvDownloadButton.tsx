@@ -14,12 +14,12 @@ const CV_FILES: Record<
   }
 > = {
   pl: {
-    path: "/files/olga-zaluska-cv-pl.pdf",
+    path: "../../../public/olga-zaluska-cv-pl.pdf",
     filename: "Olga-Zaluska-CV-PL.pdf",
     ariaLabel: "Pobierz CV w języku polskim",
   },
   en: {
-    path: "/files/olga-zaluska-cv-en.pdf",
+    path: "../../../public/olga-zaluska-cv-en.pdf",
     filename: "Olga-Zaluska-CV-EN.pdf",
     ariaLabel: "Download CV in English",
   },
