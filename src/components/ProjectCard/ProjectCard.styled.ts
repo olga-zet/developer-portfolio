@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "@tanstack/react-router";
 
-import { monoButton } from "../ProjectSection/ProjectSection.styled.ts";
+import { monoButton } from "../../pages/ProjectSection/ProjectSection.styled.ts";
 
 export const ProjectNumber = styled.p`
   margin: 0;

@@ -1,20 +1,6 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-
-import { PortfolioLayout } from "../components/PortfolioLayout/PortfolioLayout";
+import { createRootRoute } from "@tanstack/react-router";
+import { RootLayout } from "./RootLayout.tsx";
 
 export const Route = createRootRoute({
   component: RootLayout,
 });
-
-function RootLayout() {
-  return (
-    <>
-      <PortfolioLayout>
-        <Outlet />
-      </PortfolioLayout>
-
-      {import.meta.env.DEV && <TanStackRouterDevtools />}
-    </>
-  );
-}

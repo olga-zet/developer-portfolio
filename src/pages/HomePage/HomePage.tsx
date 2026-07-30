@@ -1,10 +1,10 @@
 import { PageSection } from "./HomePage.styled.ts";
-import { HeroSection } from "../../components/HeroSection/HeroSection.tsx";
-import { AboutSection } from "../../components/AboutSection/AboutSection.tsx";
-import { ProjectsSection } from "../../components/ProjectSection/ProjectSection.tsx";
-import { ExperienceSection } from "../../components/ExperienceSection/ExperienceSection.tsx";
-import { StackSection } from "../../components/StackSection/StackSection.tsx";
-import { ContactSection } from "../../components/ContactSection/ContactSection.tsx";
+import { HeroSection } from "../HeroSection/HeroSection.tsx";
+import { AboutSection } from "../AboutSection/AboutSection.tsx";
+import { ProjectsSection } from "../ProjectSection/ProjectSection.tsx";
+import { ExperienceSection } from "../ExperienceSection/ExperienceSection.tsx";
+import { StackSection } from "../StackSection/StackSection.tsx";
+import { ContactSection } from "../ContactSection/ContactSection.tsx";
 
 export const HomePage = () => {
   return (

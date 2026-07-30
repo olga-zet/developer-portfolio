@@ -1,8 +1,8 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import type { ProjectItem } from "../ProjectSection/ProjectSection.data.ts";
-import { Description } from "../ProjectSection/ProjectSection.styled.ts";
+import type { ProjectItem } from "../../pages/ProjectSection/ProjectSection.data.ts";
+import { Description } from "../../pages/ProjectSection/ProjectSection.styled.ts";
 
 import {
   ActionButton,
