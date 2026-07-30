@@ -44,7 +44,7 @@ export const PROJECTS_BY_SLUG = {
     thumbnail: "",
 
     demoUrl: "https://your-tarot-app-demo.com",
-    repositoryRequestUrl: "/#contact",
+    repositoryRequestUrl: "https://github.com/olga-zet",
 
     tags: [
       "React",
@@ -162,7 +162,7 @@ export const PROJECTS_BY_SLUG = {
     thumbnail: "/images/projects/cv-maker/thumbnail.webp",
 
     demoUrl: "https://cv-maker-five-brown.vercel.app/",
-    repositoryRequestUrl: "/#contact",
+    repositoryRequestUrl: "https://github.com/olga-zet",
 
     tags: [
       "React",

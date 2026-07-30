@@ -33,7 +33,7 @@ export const caseStudies = {
 
           actions: {
             demo: "Zobacz demo",
-            repository: "Prywatne repozytorium na życzenie",
+            repository: "Zobacz na GitHubie",
           },
 
           meta: {
@@ -221,7 +221,7 @@ export const caseStudies = {
 
           actions: {
             demo: "Zobacz demo",
-            repository: "Prywatne repozytorium na życzenie",
+            repository: "Zobacz na GitHubie",
           },
 
           meta: {
@@ -439,7 +439,7 @@ export const caseStudies = {
 
           actions: {
             demo: "View live demo",
-            repository: "Private repository on request",
+            repository: "View on GitHub",
           },
 
           meta: {
@@ -627,7 +627,7 @@ export const caseStudies = {
 
           actions: {
             demo: "View live demo",
-            repository: "Private repository on request",
+            repository: "View on GitHub",
           },
 
           meta: {
