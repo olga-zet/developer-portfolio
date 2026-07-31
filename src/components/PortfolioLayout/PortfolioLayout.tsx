@@ -1,17 +1,19 @@
-import type { ReactNode } from "react";
-
-import { Navigation } from "../Navigation/Navigation.tsx";
+import { Outlet } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { Layout, Main } from "./PortfolioLayout.styled.ts";
+import { Navigation } from "../Navigation/Navigation.tsx";
 
-type PortfolioLayoutProps = {
-  children: ReactNode;
-};
-
-export const PortfolioLayout = ({ children }: PortfolioLayoutProps) => {
+export const RootLayout = () => {
   return (
-    <Layout>
-      <Navigation />
-      <Main>{children}</Main>
-    </Layout>
+    <>
+      <Layout>
+        <Navigation />
+        <Main>
+          <Outlet />
+        </Main>
+      </Layout>
+
+      {import.meta.env.DEV && <TanStackRouterDevtools />}
+    </>
   );
 };
