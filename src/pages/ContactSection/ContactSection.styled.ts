@@ -341,7 +341,7 @@ export const FormHeading = styled.h3`
 
   @media (max-width: 640px) {
     span {
-      font-size: clamp(3rem, 15vw, 4.3rem);
+      font-size: clamp(2.5rem, 12vw, 3rem);
     }
 
     em {
