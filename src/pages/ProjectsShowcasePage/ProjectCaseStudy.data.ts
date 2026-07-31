@@ -17,7 +17,7 @@ import TarotOverviewReading from "../../../public/tarot-app/overview-reading.png
 import TarotOverviewLibrary from "../../../public/tarot-app/overview-library.png";
 import TarotCardSelection from "../../../public/tarot-app/card-selection.png";
 import TarotInterpretation from "../../../public/tarot-app/interpretation.png";
-import Tarot from "../../../public/tarot-app/ss.png";
+import Tarot from "../../../public/tarot-app/overwiev.png";
 
 import {
   CircleCheckBig,
@@ -27,7 +27,7 @@ import {
   LayoutGrid,
   LayoutTemplate,
   MessageCircleQuestion,
-  Sparkles,
+  Sparkles
 } from "lucide-react";
 
 import type { ProjectDefinition } from "./ProjectCaseStudy.types.ts";
