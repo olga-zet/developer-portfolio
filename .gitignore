@@ -25,4 +25,4 @@ dist-ssr
 *.iml
 *.png
 .env.local
-
+.tanstack/tmp/
