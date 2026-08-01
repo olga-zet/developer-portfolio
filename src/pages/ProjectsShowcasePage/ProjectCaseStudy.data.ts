@@ -27,7 +27,7 @@ import {
   LayoutGrid,
   LayoutTemplate,
   MessageCircleQuestion,
-  Sparkles,
+  Sparkles
 } from "lucide-react";
 
 import type { ProjectDefinition } from "./ProjectCaseStudy.types.ts";
@@ -43,7 +43,7 @@ export const PROJECTS_BY_SLUG = {
 
     thumbnail: "",
 
-    demoUrl: "https://your-tarot-app-demo.com",
+    demoUrl: "https://tarot-app-kohl-omega.vercel.app",
     repositoryRequestUrl: "https://github.com/olga-zet",
 
     tags: [
