@@ -80,13 +80,9 @@ import {
   StatItem,
   StatLabel,
   StatValue,
-  TechnicalHeader,
+  TechnicalHeader
 } from "./ProjectCaseStudy.styled.ts";
-import {
-  HERO_META_KEYS,
-  type ProjectCaseStudyProps,
-  TECHNICAL_DECISION_ICONS,
-} from "./ProjectCaseStudy.types.ts";
+import { HERO_META_KEYS, type ProjectCaseStudyProps, TECHNICAL_DECISION_ICONS } from "./ProjectCaseStudy.types.ts";
 import { getProjectNavigation } from "./ProjectCaseStudy.navigation.ts";
 
 export const ProjectCaseStudy = ({ project }: ProjectCaseStudyProps) => {
@@ -424,7 +420,11 @@ export const ProjectCaseStudy = ({ project }: ProjectCaseStudyProps) => {
 
               <ProcessImageFrame>
                 <ProcessImage
-                  src={resultImage}
+                  src={
+                    project.id === "cvMaker"
+                      ? resultImage
+                      : project.images.process.after
+                  }
                   alt={translateProject("process.after.imageAlt")}
                 />
               </ProcessImageFrame>

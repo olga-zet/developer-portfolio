@@ -18,6 +18,7 @@ import TarotOverviewLibrary from "../../../public/tarot-app/overview-library.png
 import TarotCardSelection from "../../../public/tarot-app/card-selection.png";
 import TarotInterpretation from "../../../public/tarot-app/interpretation.png";
 import TarotOverview from "../../../public/tarot-app/overview.png";
+import TarotInterpretationAll from "../../../public/tarot-app/tarotInterpretationAll.png";
 
 import {
   CircleCheckBig,
@@ -27,7 +28,7 @@ import {
   LayoutGrid,
   LayoutTemplate,
   MessageCircleQuestion,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 
 import type { ProjectDefinition } from "./ProjectCaseStudy.types.ts";
@@ -68,7 +69,7 @@ export const PROJECTS_BY_SLUG = {
 
       process: {
         before: TarotOverview,
-        after: TarotInterpretation,
+        after: TarotInterpretationAll,
       },
 
       result: "",
@@ -159,7 +160,7 @@ export const PROJECTS_BY_SLUG = {
     slug: "cv-maker",
     number: "02",
 
-    thumbnail: "/images/projects/cv-maker/thumbnail.webp",
+    thumbnail: "",
 
     demoUrl: "https://cv-maker-five-brown.vercel.app/",
     repositoryRequestUrl: "https://github.com/olga-zet",
@@ -184,7 +185,7 @@ export const PROJECTS_BY_SLUG = {
         after: CvMakerArchitecturePl,
       },
 
-      result: "/images/projects/cv-maker/process-before.webp",
+      result: "",
     },
 
     flow: [
