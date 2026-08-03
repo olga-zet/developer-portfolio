@@ -9,15 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as NotFoundRouteImport } from './routes/notFound'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsProjectSlugRouteImport } from './routes/projects.$projectSlug'
 
-const NotFoundRoute = NotFoundRouteImport.update({
-  id: '/notFound',
-  path: '/notFound',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,43 +25,32 @@ const ProjectsProjectSlugRoute = ProjectsProjectSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/notFound': typeof NotFoundRoute
   '/projects/$projectSlug': typeof ProjectsProjectSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/notFound': typeof NotFoundRoute
   '/projects/$projectSlug': typeof ProjectsProjectSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/notFound': typeof NotFoundRoute
   '/projects/$projectSlug': typeof ProjectsProjectSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/notFound' | '/projects/$projectSlug'
+  fullPaths: '/' | '/projects/$projectSlug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/notFound' | '/projects/$projectSlug'
-  id: '__root__' | '/' | '/notFound' | '/projects/$projectSlug'
+  to: '/' | '/projects/$projectSlug'
+  id: '__root__' | '/' | '/projects/$projectSlug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  NotFoundRoute: typeof NotFoundRoute
   ProjectsProjectSlugRoute: typeof ProjectsProjectSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/notFound': {
-      id: '/notFound'
-      path: '/notFound'
-      fullPath: '/notFound'
-      preLoaderRoute: typeof NotFoundRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -87,7 +70,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  NotFoundRoute: NotFoundRoute,
   ProjectsProjectSlugRoute: ProjectsProjectSlugRoute,
 }
 export const routeTree = rootRouteImport
